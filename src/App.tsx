@@ -22,7 +22,10 @@ const App = () => {
 
       <p className="text-foreground text-center max-w-md place-self-center">
         Esta página está ainda em construção, mas você pode conferir{' '}
-        <a href="https://luciana.dev/" className="text-cyan italic">
+        <a
+          href="https://luciana.dev/"
+          className="text-secondary hover:underline italic"
+        >
           aqui
         </a>{' '}
         outros projetos já concluídos.
