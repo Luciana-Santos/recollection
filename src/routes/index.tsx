@@ -60,6 +60,7 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                path: 'latest',
                 element: (
                   <Suspense fallback={<Loading />}>
                     <Latest />

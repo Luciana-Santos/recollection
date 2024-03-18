@@ -141,7 +141,7 @@
 }
 
 .sidebar-links {
-  @apply flex gap-2 py-2 capitalize text-gray-300 hover:text-gray-100;
+  @apply flex gap-2 py-2 capitalize hover:text-white;
 }
 
 @media (min-width: 700px) {
