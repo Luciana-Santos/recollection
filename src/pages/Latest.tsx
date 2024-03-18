@@ -1,5 +1,5 @@
 const Latest = () => {
-  return <div>Latest</div>
+  return <div>latest</div>
 }
 
 export default Latest
