@@ -1,9 +1,9 @@
 import Title from '@/components/Title'
 
-const Videos = () => {
+const Trash = () => {
   return (
     <div className="py-16 w-[min(100%-30px,_960px)] mx-auto grid grid-rows-[80px,_1fr]">
-      <Title>Videos</Title>
+      <Title>Trash</Title>
 
       <main className="main-content">
         <p>
@@ -15,4 +15,4 @@ const Videos = () => {
   )
 }
 
-export default Videos
+export default Trash

@@ -19,7 +19,7 @@
     --secondary: 18 89% 67%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 0 0% 11%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 345 68% 44%;
@@ -51,7 +51,7 @@
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 0 0% 11%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 217.2 32.6% 17.5%;
@@ -103,6 +103,54 @@
   right: 80px;
   z-index: -1;
   filter: blur(50px);
+}
+
+.grad {
+  background: linear-gradient(
+    166deg,
+    rgba(188, 36, 74, 1) 0%,
+    rgba(246, 143, 98, 1) 100%
+  );
+}
+
+.main-action {
+  @apply rounded-sm py-3 text-center uppercase tracking-wide grad leading-none hover:tracking-widest transition-all duration-300 ease-in-out;
+}
+
+.submenu::before {
+  content: '';
+  width: 1px;
+  height: 163px;
+  left: 30px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+}
+
+.submenu li {
+  position: relative;
+}
+
+.submenu li a::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+  left: -21px;
+  top: 18px;
+}
+
+.main-content {
+  @apply main-content-scroll bg-gray-700 rounded-md overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 content-start;
+}
+
+.main-content-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0, 0%, 11%) hsl(0, 0%, 11%);
+}
+
+.sidebar-links {
+  @apply flex gap-2 py-2 capitalize hover:text-white;
 }
 
 @media (min-width: 700px) {

@@ -6,7 +6,7 @@ const Landing = () => {
   return (
     <Container className="py-20">
       <header className="mb-32">
-        <Logo />
+        <Logo showDescription />
       </header>
 
       <main className="grid gap-10 max-w-[620px] mesh-gradient">
