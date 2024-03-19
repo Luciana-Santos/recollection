@@ -52,70 +52,75 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: (
+          <PrivateRoute isAuth>
+            <DashboardLayout />
+          </PrivateRoute>
+        ),
         children: [
           {
-            path: '/dashboard',
-            element: <PrivateRoute isAuth />,
-            children: [
-              {
-                index: true,
-                path: 'latest',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Latest />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'upload',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Upload />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'all-files',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <AllFiles />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'photos',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Photos />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'documents',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Documents />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'links',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Links />
-                  </Suspense>
-                ),
-              },
-              {
-                path: 'videos',
-                element: (
-                  <Suspense fallback={<Loading />}>
-                    <Videos />
-                  </Suspense>
-                ),
-              },
-            ],
+            index: true,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Latest />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'latest',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Latest />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'upload',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Upload />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'all-files',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <AllFiles />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'photos',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Photos />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'documents',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Documents />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'links',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Links />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'videos',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Videos />
+              </Suspense>
+            ),
           },
         ],
       },

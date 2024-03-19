@@ -1,5 +1,5 @@
 const Latest = () => {
-  return <div>latest</div>
+  return <div>latest files</div>
 }
 
 export default Latest
