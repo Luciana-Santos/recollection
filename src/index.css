@@ -5,13 +5,13 @@
 @layer base {
   :root {
     --background: 240 3% 6%;
-    --foreground: 19 100% 97%;
+    --foreground: 0 0% 85%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 240 3% 6%;
+    --popover-foreground: 19 100% 97%;
 
     --primary: 345 68% 44%;
     --primary-foreground: 210 40% 98%;
@@ -22,47 +22,17 @@
     --muted: 0 0% 11%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 345 68% 44%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 19 100% 97%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 345 68% 44%;
+    --border: 0 0% 11%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 0 0% 11%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -114,7 +84,7 @@
 }
 
 .main-action {
-  @apply rounded-sm py-3 text-center uppercase tracking-wide grad leading-none hover:tracking-widest transition-all duration-300 ease-in-out;
+  @apply rounded-sm py-3 text-center uppercase tracking-wide grad leading-none hover:tracking-widest transition-all duration-300 ease-in-out text-white;
 }
 
 .submenu::before {
@@ -140,8 +110,16 @@
   top: 18px;
 }
 
+.wrapper {
+  @apply w-[min(100%-30px,_960px)] mx-auto pt-10 pb-5;
+}
+
+.page-layout {
+  @apply wrapper max-h-screen min-h-screen grid grid-rows-[80px_1fr];
+}
+
 .main-content {
-  @apply main-content-scroll bg-gray-700 rounded-md overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 content-start;
+  @apply main-content-scroll bg-gray-700 rounded-md overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 md:px-8 content-start;
 }
 
 .main-content-scroll {

@@ -34,7 +34,7 @@ export const tags = [
   { id: 4, name: 'documents' },
 ]
 
-export const mockDataModal = [
+export const mockDataContent = [
   {
     id: '1',
     title: 'gegrrghht ergrg',

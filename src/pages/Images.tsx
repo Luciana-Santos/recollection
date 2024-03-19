@@ -1,9 +1,9 @@
 import Title from '@/components/Title'
 
-const Photos = () => {
+const Images = () => {
   return (
-    <div className="py-16 w-[min(100%-30px,_960px)] mx-auto grid grid-rows-[80px,_1fr]">
-      <Title>Photos</Title>
+    <div className="page-layout">
+      <Title>Images</Title>
 
       <main className="main-content">
         <p>
@@ -15,4 +15,4 @@ const Photos = () => {
   )
 }
 
-export default Photos
+export default Images

@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import Logo from './Logo'
-import { LogOut, X as CloseIcon, Clock, Folder, Trash } from 'lucide-react'
+import { LogOut, X as CloseIcon, Clock, Folder, Trash2 } from 'lucide-react'
 import { useSidebarContext } from '@/store/SidebarContext'
 import { subMenuItems } from '@/data/content'
 
@@ -83,7 +83,7 @@ const Sidebar = () => {
           }
           onClick={toggleSidebar}
         >
-          <Trash size={22} /> Trash
+          <Trash2 size={22} /> Trash
         </NavLink>
       </ul>
 
