@@ -1,4 +1,3 @@
-import Container from '@/components/Container'
 import Sidebar from '@/components/Sidebar'
 import { useSidebarContext } from '@/store/SidebarContext'
 import { MenuIcon } from 'lucide-react'
@@ -26,11 +25,7 @@ const DashboardLayout = () => {
 
       <Sidebar />
 
-      <Container>
-        <main className="py-8">
-          <Outlet />
-        </main>
-      </Container>
+      <Outlet />
     </div>
   )
 }

@@ -15,6 +15,7 @@ const Error = lazy(() => import('../pages/Error'))
 const Links = lazy(() => import('../pages/Links'))
 const Photos = lazy(() => import('../pages/Photos'))
 const Videos = lazy(() => import('../pages/Videos'))
+const Trash = lazy(() => import('../pages/Trash'))
 
 export const router = createBrowserRouter([
   {
@@ -119,6 +120,14 @@ export const router = createBrowserRouter([
             element: (
               <Suspense fallback={<Loading />}>
                 <Videos />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'trash',
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Trash />
               </Suspense>
             ),
           },
