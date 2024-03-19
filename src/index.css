@@ -140,6 +140,14 @@
   top: 18px;
 }
 
+.wrapper {
+  @apply w-[min(100%-30px,_960px)] mx-auto pt-10 pb-5;
+}
+
+.page-layout {
+  @apply wrapper max-h-screen min-h-screen grid grid-rows-[80px_1fr];
+}
+
 .main-content {
   @apply main-content-scroll bg-gray-700 rounded-md overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 content-start;
 }
