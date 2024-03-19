@@ -1,9 +1,9 @@
 import Title from '@/components/Title'
 
-const Photos = () => {
+const Images = () => {
   return (
     <div className="page-layout">
-      <Title>Photos</Title>
+      <Title>Images</Title>
 
       <main className="main-content">
         <p>
@@ -15,4 +15,4 @@ const Photos = () => {
   )
 }
 
-export default Photos
+export default Images

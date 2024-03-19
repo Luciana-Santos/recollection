@@ -1,3 +1,4 @@
+import CardLoading from '@/components/Card/CardLoading'
 import Loading from '@/components/Loading'
 import DashboardLayout from '@/pages/DashboardLayout'
 import RootLayout from '@/pages/RootLayout'
@@ -13,9 +14,10 @@ const AllFiles = lazy(() => import('../pages/AllFiles'))
 const Documents = lazy(() => import('../pages/Documents'))
 const Error = lazy(() => import('../pages/Error'))
 const Links = lazy(() => import('../pages/Links'))
-const Photos = lazy(() => import('../pages/Photos'))
+const Images = lazy(() => import('../pages/Images'))
 const Videos = lazy(() => import('../pages/Videos'))
 const Trash = lazy(() => import('../pages/Trash'))
+const FileItem = lazy(() => import('../pages/FileItem'))
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +64,7 @@ export const router = createBrowserRouter([
           {
             index: true,
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Latest />
               </Suspense>
             ),
@@ -70,7 +72,7 @@ export const router = createBrowserRouter([
           {
             path: 'latest',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Latest />
               </Suspense>
             ),
@@ -86,23 +88,23 @@ export const router = createBrowserRouter([
           {
             path: 'all-files',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <AllFiles />
               </Suspense>
             ),
           },
           {
-            path: 'photos',
+            path: 'images',
             element: (
-              <Suspense fallback={<Loading />}>
-                <Photos />
+              <Suspense fallback={<CardLoading />}>
+                <Images />
               </Suspense>
             ),
           },
           {
             path: 'documents',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Documents />
               </Suspense>
             ),
@@ -110,7 +112,7 @@ export const router = createBrowserRouter([
           {
             path: 'links',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Links />
               </Suspense>
             ),
@@ -118,7 +120,7 @@ export const router = createBrowserRouter([
           {
             path: 'videos',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Videos />
               </Suspense>
             ),
@@ -126,8 +128,16 @@ export const router = createBrowserRouter([
           {
             path: 'trash',
             element: (
-              <Suspense fallback={<Loading />}>
+              <Suspense fallback={<CardLoading />}>
                 <Trash />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'file/:fileId',
+            element: (
+              <Suspense fallback={<CardLoading />}>
+                <FileItem />
               </Suspense>
             ),
           },

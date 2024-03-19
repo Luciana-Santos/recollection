@@ -1,4 +1,6 @@
+import Card from '@/components/Card/Card'
 import Title from '@/components/Title'
+import { mockDataContent } from '@/data/content'
 
 const Latest = () => {
   return (
@@ -6,10 +8,9 @@ const Latest = () => {
       <Title>Latest</Title>
 
       <main className="main-content">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
-          ratione.
-        </p>
+        {mockDataContent.map((card) => {
+          return <Card key={card.id} data={card} />
+        })}
       </main>
     </div>
   )

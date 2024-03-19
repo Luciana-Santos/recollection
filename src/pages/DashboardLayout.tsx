@@ -18,7 +18,7 @@ const DashboardLayout = () => {
 
       <div
         onClick={toggleSidebar}
-        className={`bg-[rgba(0,_0,_0,_0.4)] w-screen h-screen absolute top-0 left-0 z-9 sm:hidden ${
+        className={`bg-[rgba(0,_0,_0,_0.4)] w-screen h-screen absolute top-0 left-0 z-10 sm:hidden ${
           showSidebar ? 'backdrop-blur-sm visible' : 'opacity-0 invisible'
         }`}
       ></div>
