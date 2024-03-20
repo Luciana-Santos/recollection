@@ -131,6 +131,26 @@
   @apply flex gap-2 py-2 capitalize hover:text-white;
 }
 
+input[type='checkbox'] + .checkbox {
+  background: hsl(240, 3%, 6%);
+  padding-block: 6px;
+  padding-inline: 14px;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+}
+
+input[type='checkbox']:checked + .checkbox {
+  background: #bc244a;
+}
+
+input:focus {
+  box-shadow: 0 0 0 3px hsl(0, 0%, 11%), 0 0 0 6px #9a9aa1;
+  outline: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
 @media (min-width: 700px) {
   .mesh-gradient::before {
     width: 500px;

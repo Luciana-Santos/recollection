@@ -3,8 +3,8 @@ import { FileText, Image, Link, Play } from 'lucide-react'
 export const subMenuItems = [
   {
     id: 1,
-    name: 'photos',
-    path: '/dashboard/photos',
+    name: 'images',
+    path: '/dashboard/images',
     icon: Image,
   },
   {
@@ -28,7 +28,7 @@ export const subMenuItems = [
 ]
 
 export const tags = [
-  { id: 1, name: 'photos' },
+  { id: 1, name: 'images' },
   { id: 2, name: 'links' },
   { id: 3, name: 'videos' },
   { id: 4, name: 'documents' },
