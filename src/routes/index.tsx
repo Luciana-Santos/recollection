@@ -7,7 +7,6 @@ import { Suspense, lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 const Landing = lazy(() => import('../pages/Landing'))
 const Login = lazy(() => import('../pages/Login'))
-const Register = lazy(() => import('../pages/Register'))
 const Latest = lazy(() => import('../pages/Latest'))
 const Upload = lazy(() => import('../pages/Upload'))
 const AllFiles = lazy(() => import('../pages/AllFiles'))
@@ -38,14 +37,6 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'register',
-        element: (
-          <Suspense fallback={<CardLoading />}>
-            <Register />
-          </Suspense>
-        ),
-      },
-      {
         path: 'login',
         element: (
           <Suspense fallback={<CardLoading />}>
@@ -56,7 +47,7 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: (
-          <PrivateRoute isAuth>
+          <PrivateRoute>
             <DashboardLayout />
           </PrivateRoute>
         ),

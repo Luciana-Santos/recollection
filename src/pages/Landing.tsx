@@ -27,12 +27,6 @@ const Landing = () => {
           >
             Login
           </Link>
-          <Link
-            to="/register"
-            className="btn-link hover:bg-primary outline outline-1 outline-primary text-primary hover:text-inherit"
-          >
-            Register
-          </Link>
         </div>
       </main>
     </Container>

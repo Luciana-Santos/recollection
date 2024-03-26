@@ -1,20 +1,19 @@
-import { useEffect } from 'react'
+import { useAuth } from '@/store/AuthContext'
 import { Navigate } from 'react-router-dom'
 
 interface PrivateRoute {
-  isAuth: boolean
   children: React.ReactNode
 }
 
-const PrivateRoute = ({ isAuth, children }: PrivateRoute) => {
-  useEffect(
-    function () {
-      if (!isAuth) <Navigate to="/login" replace />
-    },
-    [isAuth],
-  )
+const PrivateRoute = ({ children }: PrivateRoute) => {
+  const { user } = useAuth()
+  console.log(user)
 
-  if (isAuth) return children
+  if (!user) {
+    return <Navigate to="/login" replace />
+  }
+
+  return children
 }
 
 export default PrivateRoute

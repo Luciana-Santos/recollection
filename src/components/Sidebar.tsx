@@ -3,9 +3,11 @@ import Logo from './Logo'
 import { LogOut, X as CloseIcon, Clock, Folder, Trash2 } from 'lucide-react'
 import { useSidebarContext } from '@/store/SidebarContext'
 import { subMenuItems } from '@/data/content'
+import { useAuth } from '@/store/AuthContext'
 
 const Sidebar = () => {
   const { showSidebar, toggleSidebar } = useSidebarContext()
+  const { signOut } = useAuth()
 
   return (
     <aside
@@ -88,7 +90,10 @@ const Sidebar = () => {
       </ul>
 
       <footer>
-        <button className="flex text-gray-300 gap-2 hover:text-gray-100 transition-all duration-300 ease-in-out">
+        <button
+          className="flex text-gray-300 gap-2 hover:text-gray-100 transition-all duration-300 ease-in-out"
+          onClick={signOut}
+        >
           <span>
             <LogOut />
           </span>
