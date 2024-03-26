@@ -119,7 +119,7 @@
 }
 
 .main-content {
-  @apply main-content-scroll bg-gray-700 rounded-md overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 md:px-8 content-start;
+  @apply main-content-scroll bg-gray-700 rounded-2xl overflow-y-auto flex flex-wrap  gap-5 justify-center md:justify-start overflow-x-hidden py-8 px-4 md:px-8 content-start;
 }
 
 .main-content-scroll {
