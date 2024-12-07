@@ -1,5 +1,12 @@
+import Header from '../ui/Header'
+
 function Documents() {
-  return <div>Documents</div>
+  return (
+    <div>
+      <Header />
+      Documents
+    </div>
+  )
 }
 
 export default Documents

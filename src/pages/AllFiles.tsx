@@ -1,5 +1,12 @@
+import Header from '../ui/Header'
+
 function AllFiles() {
-  return <div>AllFiles</div>
+  return (
+    <div>
+      <Header />
+      AllFiles
+    </div>
+  )
 }
 
 export default AllFiles

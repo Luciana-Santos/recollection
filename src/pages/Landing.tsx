@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
-import Container from '../ui/Container'
 import Logo from '../ui/Logo'
 
 const Landing = () => {
   return (
-    <Container className="py-20">
+    <div className="w-[min(100%-2rem,_80rem)] mx-auto py-20 relative mesh-gradient">
       <header className="mb-32">
         <Logo showDescription />
       </header>
 
-      <main className="grid gap-10 max-w-[620px] mesh-gradient">
+      <main className="grid gap-10 max-w-[620px] ">
         <h1 className="font-yeseva text-[clamp(1.5rem,_4vw,_2rem)]">
           File Management App
         </h1>
@@ -29,7 +28,7 @@ const Landing = () => {
           </Link>
         </div>
       </main>
-    </Container>
+    </div>
   )
 }
 

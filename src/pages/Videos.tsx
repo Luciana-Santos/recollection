@@ -1,5 +1,12 @@
+import Header from '../ui/Header'
+
 function Videos() {
-  return <div>Videos</div>
+  return (
+    <div>
+      <Header />
+      Videos
+    </div>
+  )
 }
 
 export default Videos

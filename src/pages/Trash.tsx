@@ -1,5 +1,12 @@
+import Header from '../ui/Header'
+
 function Trash() {
-  return <div>Trash</div>
+  return (
+    <div>
+      <Header />
+      Trash
+    </div>
+  )
 }
 
 export default Trash
