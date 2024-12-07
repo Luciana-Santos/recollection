@@ -5,7 +5,7 @@ type Props = {
 
 const Container = ({ children, className }: Props) => {
   return (
-    <div className={`w-[min(100%-2rem,_60rem)] mx-auto ${className}`}>
+    <div className={`w-[min(100%-2rem,_120rem)] mx-auto ${className}`}>
       {children}
     </div>
   )

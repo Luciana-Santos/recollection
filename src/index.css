@@ -43,6 +43,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  img {
+    @apply w-full block;
+  }
 }
 
 .btn-link {
