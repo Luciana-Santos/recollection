@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
+import LandingLoading from '../ui/Loading/LandingLoading'
 
-const Landing = () => {
+function Landing() {
   return (
     <div className="w-[min(100%-2rem,_80rem)] mx-auto py-20 relative mesh-gradient">
       <header className="mb-32">
