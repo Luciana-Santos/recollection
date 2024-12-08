@@ -1,12 +1,12 @@
 import Header from '../ui/Header'
 
-function Photos() {
+function Images() {
   return (
     <div>
       <Header />
-      Photos
+      Images
     </div>
   )
 }
 
-export default Photos
+export default Images

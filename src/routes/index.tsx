@@ -1,17 +1,17 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Landing from '../pages/Landing'
-import AppLayout from '../ui/AppLayout'
-import Recents from '../pages/Recents'
-import Upload from '../pages/Upload'
 import AllFiles from '../pages/AllFiles'
+import Documents from '../pages/Documents'
+import ErrorPage from '../pages/ErrorPage'
+import Images from '../pages/Images'
+import Landing from '../pages/Landing'
+import Links from '../pages/Links'
 import Login from '../pages/Login'
 import PageNotFound from '../pages/PageNotFound'
-import Photos from '../pages/Photos'
-import Documents from '../pages/Documents'
-import Links from '../pages/Links'
-import Videos from '../pages/Videos'
+import Recents from '../pages/Recents'
 import Trash from '../pages/Trash'
-import ErrorPage from '../pages/ErrorPage'
+import Upload from '../pages/Upload'
+import Videos from '../pages/Videos'
+import AppLayout from '../ui/AppLayout'
 
 export const router = createBrowserRouter([
   {
@@ -32,8 +32,8 @@ export const router = createBrowserRouter([
         element: <AllFiles />,
       },
       {
-        path: '/photos',
-        element: <Photos />,
+        path: '/images',
+        element: <Images />,
       },
       {
         path: '/documents',

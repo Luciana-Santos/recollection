@@ -24,13 +24,13 @@ function Sidebar({ isOpen, onOpen }: Sidebar) {
         <Logo className="items-center first:w-[25px] *:text-[1rem]" />
       </header>
 
-      <Link to="/dashboard/upload" className="main-action" onClick={onOpen}>
+      <Link to="/upload" className="main-action" onClick={onOpen}>
         upload
       </Link>
 
       <ul className="flex flex-col gap-2">
         <NavLink
-          to="/dashboard/recents"
+          to="/recents"
           className={({ isActive }) =>
             isActive
               ? 'sidebar-links text-white'
@@ -41,7 +41,7 @@ function Sidebar({ isOpen, onOpen }: Sidebar) {
           <Clock size={22} /> Recents
         </NavLink>
         <NavLink
-          to="/dashboard/all-files"
+          to="/all-files"
           className={({ isActive }) =>
             isActive
               ? 'py-2 capitalize text-white'
@@ -73,7 +73,7 @@ function Sidebar({ isOpen, onOpen }: Sidebar) {
           })}
         </ul>
         <NavLink
-          to="/dashboard/trash"
+          to="/trash"
           className={({ isActive }) =>
             isActive
               ? 'sidebar-links text-white'
