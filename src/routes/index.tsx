@@ -6,7 +6,6 @@ import Images from '../pages/Images'
 import Landing from '../pages/Landing'
 import Links from '../pages/Links'
 import Login from '../pages/Login'
-import PageNotFound from '../pages/PageNotFound'
 import Recents from '../pages/Recents'
 import Trash from '../pages/Trash'
 import Upload from '../pages/Upload'
@@ -64,6 +63,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <PageNotFound />,
+    element: <ErrorPage />,
   },
 ])
