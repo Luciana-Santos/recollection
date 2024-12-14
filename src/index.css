@@ -43,6 +43,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  img {
+    @apply w-full block;
+  }
 }
 
 .btn-link {
@@ -108,6 +111,42 @@
 
 .main-action {
   @apply rounded-sm py-3 text-center uppercase tracking-wide grad leading-none hover:tracking-widest transition-all duration-300 ease-in-out text-white;
+}
+
+.submenu::before {
+  content: '';
+  width: 1px;
+  height: 163px;
+  left: 30px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+}
+
+.submenu li {
+  position: relative;
+}
+
+.submenu li a::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+  left: -21px;
+  top: 18px;
+}
+
+.sidebar-links {
+  @apply flex gap-2 py-2 capitalize hover:text-white;
+}
+
+.main-content {
+  @apply grid gap-4 justify-center content-start auto-rows-auto md:grid-cols-[repeat(auto-fit,minmax(230px,1fr))] main-content-scroll overflow-y-scroll md:pl-5 py-10  max-h-screen px-10 grow;
+}
+
+.main-content-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0, 0%, 11%) hsl(0, 0%, 11%);
 }
 
 @media (min-width: 700px) {

@@ -1,0 +1,14 @@
+import FileGridView from '../features/FileGridView'
+import Heading from '../ui/Heading'
+
+function Videos() {
+  return (
+    <div className="max-h-screen sm:min-h-screen grid grid-rows-[130px_1fr] bg-gray-700 overflow-hidden">
+      <Heading>Videos</Heading>
+
+      <FileGridView />
+    </div>
+  )
+}
+
+export default Videos
