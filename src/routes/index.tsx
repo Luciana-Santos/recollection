@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import AllFiles from '../pages/AllFiles'
 import Documents from '../pages/Documents'
 import ErrorPage from '../pages/ErrorPage'
+import FileItemPage from '../pages/FileItemPage'
 import Images from '../pages/Images'
 import Links from '../pages/Links'
 import Login from '../pages/Login'
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: '/trash',
         element: <Trash />,
+      },
+      {
+        path: '/file-item',
+        element: <FileItemPage />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -14,7 +14,7 @@ function AppLayout() {
   return (
     <div className="grid sm:grid-cols-[260px_1fr] relative">
       <MenuIcon
-        className={`absolute top-[10px] left-[10px] z-9 sm:hidden cursor-pointer ${
+        className={`absolute top-[20px] left-[30px] z-9 sm:hidden cursor-pointer ${
           showSidebar ? 'hidden' : 'block'
         }`}
         size={24}
@@ -30,11 +30,9 @@ function AppLayout() {
 
       <Sidebar onOpen={toggleSidebar} isOpen={showSidebar} />
 
-      <div>
-        <Container>
-          <Outlet />
-        </Container>
-      </div>
+      <Container>
+        <Outlet />
+      </Container>
     </div>
   )
 }

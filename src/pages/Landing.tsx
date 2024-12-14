@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Logo from '../ui/Logo'
-import LandingLoading from '../ui/Loading/LandingLoading'
 
 function Landing() {
   return (
