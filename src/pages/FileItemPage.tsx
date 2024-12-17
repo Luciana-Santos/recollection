@@ -1,12 +1,13 @@
-import { FilePenLine, Trash2 } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import CardContextMenu from '@/ui/CardContextMenu'
+import { Link, useParams } from 'react-router-dom'
 
 function FileItemPage() {
+  const { fileId } = useParams()
+  console.log(fileId)
+
   return (
     <main className="overflow-hidden bg-gray-700 flex flex-col">
       <div className="grid gap-4 justify-center content-start main-content-scroll overflow-y-scroll pt-20 min-h-screen sm:max-h-screen px-10 grow grid-row-[130px,_1fr]">
-        <FilePenLine className="absolute top-6 right-8 text-gray-300 cursor-pointer" />
-
         <h1 className="text-center text-[clamp(1.5rem,_4vw,_2rem)] mb-4">
           lorem
         </h1>
@@ -27,7 +28,7 @@ function FileItemPage() {
               <p>31/03/23</p>
             </div>
 
-            <Trash2 size={20} className="text-gray-300 cursor-pointer" />
+            <CardContextMenu list={['Details', 'Edit', 'Delete']} />
           </div>
 
           <div className="flex flex-col md:flex-row *:flex-1 gap-5">

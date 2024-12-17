@@ -1,25 +1,36 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter } from 'react-router-dom'
-import AllFiles from '../pages/AllFiles'
-import Documents from '../pages/Documents'
-import ErrorPage from '../pages/ErrorPage'
-import FileItemPage from '../pages/FileItemPage'
-import Images from '../pages/Images'
-import Links from '../pages/Links'
-import Login from '../pages/Login'
-import Recents from '../pages/Recents'
-import Trash from '../pages/Trash'
-import Upload from '../pages/Upload'
-import Videos from '../pages/Videos'
-import AppLayout from '../ui/AppLayout'
-import LandingLoading from '../ui/Loading/LandingLoading'
-const Landing = lazy(() => import('../pages/Landing'))
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import LandingLoading from '../ui/LandingLoading'
+import AppLayoutSkeleton from '@/ui/AppLayoutSkeleton'
+import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
+import Upload from '@/pages/Upload'
+import ErrorPage from '@/pages/ErrorPage'
+import Login from '@/pages/Login'
+import FileSkeleton from '@/ui/FileSkeleton'
+const Landing = lazy(() => import('@/pages/Landing'))
+const Recents = lazy(() => import('@/pages/Recents'))
+const AllFiles = lazy(() => import('@/pages/AllFiles'))
+const Documents = lazy(() => import('@/pages/Documents'))
+const Images = lazy(() => import('@/pages/Images'))
+const Links = lazy(() => import('@/pages/Links'))
+const Videos = lazy(() => import('@/pages/Videos'))
+const Trash = lazy(() => import('@/pages/Trash'))
+const FileItemPage = lazy(() => import('@/pages/FileItemPage'))
+const AppLayout = lazy(() => import('@/ui/AppLayout'))
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />,
+    element: (
+      <Suspense fallback={<AppLayoutSkeleton />}>
+        <AppLayout />
+      </Suspense>
+    ),
     children: [
+      {
+        index: true,
+        element: <Navigate to="/recents" replace />,
+      },
       {
         path: '/upload',
         element: <Upload />,
@@ -27,35 +38,67 @@ export const router = createBrowserRouter([
       {
         index: true,
         path: '/recents',
-        element: <Recents />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Recents />
+          </Suspense>
+        ),
       },
       {
         path: '/all-files',
-        element: <AllFiles />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <AllFiles />
+          </Suspense>
+        ),
       },
       {
         path: '/images',
-        element: <Images />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Images />
+          </Suspense>
+        ),
       },
       {
         path: '/documents',
-        element: <Documents />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Documents />
+          </Suspense>
+        ),
       },
       {
         path: '/links',
-        element: <Links />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Links />
+          </Suspense>
+        ),
       },
       {
         path: '/videos',
-        element: <Videos />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Videos />
+          </Suspense>
+        ),
       },
       {
         path: '/trash',
-        element: <Trash />,
+        element: (
+          <Suspense fallback={<FileGridViewSkeleton />}>
+            <Trash />
+          </Suspense>
+        ),
       },
       {
-        path: '/file-item',
-        element: <FileItemPage />,
+        path: 'file/:fileId',
+        element: (
+          <Suspense fallback={<FileSkeleton />}>
+            <FileItemPage />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <ErrorPage />,

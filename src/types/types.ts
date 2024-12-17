@@ -1,4 +1,4 @@
-export interface IFileItemData {
+export interface ICardData {
   id: string
   title: string
   image: string

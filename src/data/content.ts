@@ -31,8 +31,7 @@ export const mockDataModal = [
   {
     id: '1',
     title: 'gegrrghht ergrg',
-    image:
-      'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
+    image: '',
     date: '31/01/23',
     tag: 'document',
     notes:
