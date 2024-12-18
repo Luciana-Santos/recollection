@@ -22,7 +22,7 @@ function Card({ data, className }: { data: ICardData; className?: string }) {
         >
           {data.title}
         </Link>
-        <CardContextMenu list={['Details', 'Edit', 'Delete']} />
+        <CardContextMenu id={data.id} list={['Details', 'Edit', 'Delete']} />
       </div>
     </article>
   )

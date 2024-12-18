@@ -1,4 +1,5 @@
 import CardContextMenu from '@/ui/CardContextMenu'
+import { ArrowDownToLine } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 
 function FileItemPage() {
@@ -28,7 +29,7 @@ function FileItemPage() {
               <p>31/03/23</p>
             </div>
 
-            <CardContextMenu list={['Details', 'Edit', 'Delete']} />
+            <CardContextMenu id={fileId} list={['Edit', 'Delete']} />
           </div>
 
           <div className="flex flex-col md:flex-row *:flex-1 gap-5">
@@ -51,12 +52,18 @@ function FileItemPage() {
               </div>
             </div>
 
-            <div className="overflow-hidden aspect-[1.6]">
+            <div className="overflow-hidden aspect-[1.6] group relative">
               <img
                 src="https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true"
                 alt=""
-                className="rounded-xl "
+                className="rounded-xl object-cover"
               />
+
+              <div className="absolute inset-0 text-lg bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-xl">
+                <button className="text-lg">
+                  Donwload image <ArrowDownToLine className="mx-auto mt-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
