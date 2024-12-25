@@ -5,21 +5,31 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './DropdownMenu'
+import { Link } from 'react-router-dom'
 
 type List = {
   list: string[]
+  id: string
 }
 
-function CardContextMenu({ list }: List) {
+function CardContextMenu({ list, id }: List) {
+  const [action1, action2, action3] = list
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none focus:ring focus:ring-secondary">
         <EllipsisVertical className=" hover:text-secondary transition-colors" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {list.map((item) => (
-          <DropdownMenuItem key={item}>{item}</DropdownMenuItem>
-        ))}
+        <Link key={id} to={`/file/${id}`}>
+          <DropdownMenuItem>{action1}</DropdownMenuItem>
+        </Link>
+
+        <Link key={id} to={`/file/${id}`}>
+          <DropdownMenuItem>{action2}</DropdownMenuItem>
+        </Link>
+
+        <DropdownMenuItem>{action3}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
