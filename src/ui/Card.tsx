@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import CardContextMenu from './CardContextMenu'
 
 function Card({ data, className }: { data: ICardData; className?: string }) {
+  console.log(data)
+
   return (
     <article
       className={`${className} grid gap-2 cursor-pointer transition-colors`}
