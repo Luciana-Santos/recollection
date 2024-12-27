@@ -1,9 +1,9 @@
-import { mockDataModal } from '../data/content'
+import { mockDataModal } from '@/data/content'
 import Card from '../ui/Card'
 import EmptyGridView from '../ui/EmptyGridView'
 
 function FileGridView() {
-  if (mockDataModal.length < 1) return <EmptyGridView />
+  if (!mockDataModal.length) return <EmptyGridView />
 
   if (mockDataModal.length === 1) {
     return (

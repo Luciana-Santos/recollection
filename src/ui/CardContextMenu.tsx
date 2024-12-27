@@ -21,11 +21,11 @@ function CardContextMenu({ list, id }: List) {
         <EllipsisVertical className=" hover:text-secondary transition-colors" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <Link key={id} to={`/file/${id}`}>
+        <Link to={`/file/${id}`}>
           <DropdownMenuItem>{action1}</DropdownMenuItem>
         </Link>
 
-        <Link key={id} to={`/file/${id}`}>
+        <Link to={`/file/${id}`}>
           <DropdownMenuItem>{action2}</DropdownMenuItem>
         </Link>
 
