@@ -1,16 +1,21 @@
-import { mockDataModal } from '@/data/content'
+import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
 import Card from '../ui/Card'
 import EmptyGridView from '../ui/EmptyGridView'
+import { useFiles } from './useFiles'
 
 function FileGridView() {
-  if (!mockDataModal.length) return <EmptyGridView />
+  const { files, isLoading } = useFiles()
 
-  if (mockDataModal.length === 1) {
+  if (isLoading) return <FileGridViewSkeleton />
+
+  if (!files.length) return <EmptyGridView />
+
+  if (files.length === 1) {
     return (
       <div className="overflow-hidden min-h-screen  bg-gray-700 rounded-t-2xl">
         <main className="main-content items-center">
-          {mockDataModal.map((item) => {
-            return <Card key={item.id} data={item} className="max-w-[200px]" />
+          {files.map((file) => {
+            return <Card key={file.id} data={file} className="max-w-[200px]" />
           })}
         </main>
       </div>
@@ -20,8 +25,8 @@ function FileGridView() {
   return (
     <main className="overflow-hidden bg-gray-700 flex flex-col rounded-t-2xl">
       <div className="main-content">
-        {mockDataModal.map((item) => {
-          return <Card key={item.id} data={item} />
+        {files.map((file) => {
+          return <Card key={file.id} data={file} />
         })}
       </div>
     </main>
