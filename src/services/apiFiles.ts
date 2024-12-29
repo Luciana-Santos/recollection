@@ -11,7 +11,7 @@ export async function getFiles() {
   return files
 }
 
-export async function getFile(id: string) {
+export async function getFile(id: string | null) {
   const { data: file, error } = await supabase
     .from('files')
     .select('*, tag(*)')
