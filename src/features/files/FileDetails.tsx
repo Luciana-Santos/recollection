@@ -1,10 +1,11 @@
-import CardContextMenu from '@/ui/CardContextMenu'
 import { ArrowDownToLine, Image } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useFile } from './useFile'
 import { format } from 'date-fns'
 import FileSkeleton from '@/ui/FileSkeleton'
 import EmptyGridView from '@/ui/EmptyGridView'
+import FileContextMenu from '@/ui/FileContextMenu'
+import { AlertDialog } from '@/ui/AlertDialog'
 
 function FileDetails() {
   const { file, isLoading } = useFile()
@@ -44,8 +45,9 @@ function FileDetails() {
               <span className="text-gray-300 text-sm">Date:</span>
               <p>{format(new Date(created_at), 'dd/MM/yyyy')}</p>
             </div>
-
-            <CardContextMenu id={id} list={['Edit', 'Delete']} />
+            <AlertDialog>
+              <FileContextMenu id={id} goBack={true} />
+            </AlertDialog>
           </div>
 
           <div className="flex flex-col md:flex-row *:flex-1 gap-5">

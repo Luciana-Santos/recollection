@@ -1,6 +1,6 @@
 import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
-import Card from '../ui/Card'
-import EmptyGridView from '../ui/EmptyGridView'
+import Card from '../../ui/FileCard'
+import EmptyGridView from '../../ui/EmptyGridView'
 import { useFiles } from './useFiles'
 
 function FileGridView() {
