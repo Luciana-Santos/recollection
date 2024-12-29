@@ -25,3 +25,14 @@ export async function getFile(id: string | null) {
 
   return file
 }
+
+export async function deleteFile(id) {
+  const { data, error } = await supabase.from('files').delete().eq('id', id)
+
+  if (error) {
+    console.error(error)
+    throw new Error('File could not be uploaded')
+  }
+
+  return data
+}

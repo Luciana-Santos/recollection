@@ -1,9 +1,16 @@
 import { Image } from 'lucide-react'
 import { ICardData } from '../types/types'
 import { Link } from 'react-router-dom'
-import CardContextMenu from './CardContextMenu'
+import FileContextMenu from './FileContextMenu'
+import { AlertDialog } from './AlertDialog'
 
-function Card({ data, className }: { data: ICardData; className?: string }) {
+function FileCard({
+  data,
+  className,
+}: {
+  data: ICardData
+  className?: string
+}) {
   return (
     <article
       className={`${className} grid gap-2 cursor-pointer transition-colors`}
@@ -22,10 +29,12 @@ function Card({ data, className }: { data: ICardData; className?: string }) {
         >
           {data.title}
         </Link>
-        <CardContextMenu id={data.id} list={['Details', 'Edit', 'Delete']} />
+        <AlertDialog>
+          <FileContextMenu id={data.id} action={'Details'} />
+        </AlertDialog>
       </div>
     </article>
   )
 }
 
-export default Card
+export default FileCard
