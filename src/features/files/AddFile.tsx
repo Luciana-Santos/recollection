@@ -2,8 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { ImagePlus } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { formSchema, FormSchemaType } from './formSchema'
+import { useUploadFile } from './useUploadFile'
 
 function AddFile() {
+  const { isUploading, uploadFile } = useUploadFile()
+
   const {
     register,
     handleSubmit,
@@ -12,14 +15,19 @@ function AddFile() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: '',
-      url: '',
-      category: '',
+      link: '',
+      tag: '',
       image: '',
     },
   })
 
-  const handleOnSubmit = (values: FormSchemaType) => {
-    console.log(values)
+  const handleOnSubmit = (data: FormSchemaType) => {
+    const image = data.image[0]
+
+    uploadFile({
+      ...data,
+      image: image,
+    })
   }
 
   return (
@@ -49,29 +57,13 @@ function AddFile() {
               <li className="check">
                 <input
                   type="radio"
-                  id="document"
-                  value="document"
-                  className="fixed w-0 opacity-0"
-                  {...register('category')}
-                />
-                <label
-                  htmlFor="document"
-                  className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
-                >
-                  document
-                </label>
-              </li>
-
-              <li className="check">
-                <input
-                  type="radio"
                   id="image"
-                  value="image"
-                  {...register('category')}
+                  value="1"
                   className="fixed w-0 opacity-0"
+                  {...register('tag')}
                 />
                 <label
-                  htmlFor="image"
+                  htmlFor="images"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
                   image
@@ -81,16 +73,32 @@ function AddFile() {
               <li className="check">
                 <input
                   type="radio"
+                  id="document"
+                  value="2"
+                  {...register('tag')}
+                  className="fixed w-0 opacity-0"
+                />
+                <label
+                  htmlFor="documents"
+                  className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
+                >
+                  document
+                </label>
+              </li>
+
+              <li className="check">
+                <input
+                  type="radio"
                   id="link"
-                  value="link"
-                  {...register('category')}
+                  value="3"
+                  {...register('tag')}
                   className="fixed w-0 opacity-0"
                 />
                 <label
                   htmlFor="link"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
-                  link
+                  links
                 </label>
               </li>
 
@@ -98,21 +106,21 @@ function AddFile() {
                 <input
                   type="radio"
                   id="video"
-                  value="lvideonk"
-                  {...register('category')}
+                  value="4"
+                  {...register('tag')}
                   className="fixed w-0 opacity-0"
                 />
                 <label
                   htmlFor="video"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
-                  video
+                  videos
                 </label>
               </li>
             </ul>
-            {errors.category?.message && (
+            {errors.tag?.message && (
               <span className="text-red-500 text-xs absolute -bottom-7 right-0">
-                {errors.category?.message}
+                {errors.tag?.message}
               </span>
             )}
           </fieldset>
@@ -127,13 +135,13 @@ function AddFile() {
               <input
                 type="text"
                 placeholder="https://url.com"
-                id="url"
+                id="link"
                 className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full focus:outline-none focus:ring focus:ring-secondary"
-                {...register('url')}
+                {...register('link')}
               />
-              {errors.url?.message && (
+              {errors.link?.message && (
                 <span className="text-red-500 text-xs absolute -bottom-7 right-0">
-                  {errors.url?.message}
+                  {errors.link?.message}
                 </span>
               )}
             </fieldset>
@@ -178,7 +186,11 @@ function AddFile() {
           <button type="reset" className="text-gray-300 hover:underline">
             Cancel
           </button>
-          <button type="submit" className="w-[120px] main-action">
+          <button
+            disabled={isUploading}
+            type="submit"
+            className="w-[120px] main-action"
+          >
             Upload
           </button>
         </div>
