@@ -13,11 +13,12 @@ export const formSchema = z.object({
     .string()
     .min(3, { message: 'Must be 3 or more characters long.' })
     .trim(),
-  url: z
+  link: z
     .string()
-    .startsWith('https://', { message: 'Must provide secure URL.' }),
+    .startsWith('https://', { message: 'Must provide secure URL.' })
+    .optional(),
   notes: z.string().optional(),
-  category: z.string().min(1, { message: 'At least 1 must be selected.' }),
+  tag: z.string().min(1, { message: 'At least 1 must be selected.' }),
   image: z
     .any()
     .optional()
