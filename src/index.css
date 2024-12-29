@@ -149,6 +149,19 @@
   scrollbar-color: hsl(0, 0%, 11%) hsl(0, 0%, 11%);
 }
 
+.check input[type='radio']:checked + label,
+.check input[type='radio']:hover + label {
+  background: #bc244a;
+}
+
+input[type='text']:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px hsl(0, 0%, 11%), 0 0 0 6px #f68f62;
+  outline: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
 @media (min-width: 700px) {
   .mesh-gradient::before {
     width: 500px;

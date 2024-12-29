@@ -1,4 +1,4 @@
-import FileGridView from '../features/FileGridView'
+import FileGridView from '../features/files/FileGridView'
 import Heading from '../ui/Heading'
 
 function Videos() {

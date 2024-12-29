@@ -1,4 +1,4 @@
-import AddFile from '../features/AddFile'
+import AddFile from '../features/files/AddFile'
 import Heading from '../ui/Heading'
 
 function Upload() {
