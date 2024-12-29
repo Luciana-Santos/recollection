@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 import CardContextMenu from './CardContextMenu'
 
 function Card({ data, className }: { data: ICardData; className?: string }) {
-  console.log(data)
-
   return (
     <article
       className={`${className} grid gap-2 cursor-pointer transition-colors`}
@@ -20,7 +18,7 @@ function Card({ data, className }: { data: ICardData; className?: string }) {
       <div className="flex items-center grid-col-[2fr, 1fr] justify-between">
         <Link
           to={`/file/${data.id}`}
-          className="text-xs grow hover:text-secondary transition-colors"
+          className="text-[clamp(0.75rem,_4vw,_1rem)] grow hover:text-secondary transition-colors"
         >
           {data.title}
         </Link>

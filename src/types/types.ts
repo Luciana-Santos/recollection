@@ -2,8 +2,8 @@ export interface ICardData {
   id: string
   title: string
   image: string
-  date: string
-  tag: string
+  created_at: string
+  tag: { id: number; title: string }
   notes: string
   link: string
 }
