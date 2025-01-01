@@ -6,10 +6,12 @@ const GoogleIcon = () => (
     fill="currentColor"
     stroke="currentColor"
     strokeWidth="0"
-    style={{
-      '--darkreader-inline-fill': 'currentColor',
-      '--darkreader-inline-stroke': 'currentColor',
-    }}
+    style={
+      {
+        '--darkreader-inline-fill': 'currentColor',
+        '--darkreader-inline-stroke': 'currentColor',
+      } as React.CSSProperties
+    }
     viewBox="0 0 24 24"
   >
     <path
