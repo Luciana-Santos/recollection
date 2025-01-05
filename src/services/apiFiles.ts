@@ -11,7 +11,7 @@ export async function getFiles() {
   return files
 }
 
-export async function getFile(id: string | null) {
+export async function getFile(id: string) {
   const { data: file, error } = await supabase
     .from('files')
     .select('*, tag(*)')
@@ -27,13 +27,14 @@ export async function getFile(id: string | null) {
 }
 
 export async function uploadFile(newFile) {
-  const imageName = `${Math.random()}-${newFile.image.name}`.replaceAll('/', '')
+  const imageName = `${Math.random()}-${newFile.image.name}`.replace(/\//g, '')
   const imagePath = `${supabaseUrl}/storage/v1/object/public/recollection-images/${imageName}`
 
   // ? Cria o arquivo
   const { data, error } = await supabase
     .from('files')
     .insert([{ ...newFile, image: imagePath }])
+    .select()
 
   if (error) {
     console.error(error)
@@ -47,7 +48,7 @@ export async function uploadFile(newFile) {
 
   // ? Deleta o arquivo se der erro no upload da imagem
   if (storageError) {
-    await supabase.from('files').delete().eq('id', data.id)
+    await supabase.from('files').delete().eq('id', data[0].id)
     console.error(storageError)
     throw new Error('Image could not be loaded and the file was not uploaded')
   }

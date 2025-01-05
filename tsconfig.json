@@ -12,6 +12,6 @@
     "types": ["vite/client"],
     "strict": true,
     "noImplicitAny": false,
-    "lib": ["ES2021.String"]
+    "lib": ["ES2021"]
   }
 }
