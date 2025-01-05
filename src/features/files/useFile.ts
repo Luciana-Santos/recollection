@@ -12,7 +12,7 @@ export function useFile() {
     error,
   } = useQuery<ICardData>({
     queryKey: ['file', fileId],
-    queryFn: () => getFile(fileId ?? null),
+    queryFn: () => getFile(fileId ?? ''),
     retry: false,
   })
 
