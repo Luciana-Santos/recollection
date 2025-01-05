@@ -65,7 +65,7 @@ function AddFile() {
                   {...register('tag')}
                 />
                 <label
-                  htmlFor="images"
+                  htmlFor="image"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
                   image
@@ -81,7 +81,7 @@ function AddFile() {
                   className="fixed w-0 opacity-0"
                 />
                 <label
-                  htmlFor="documents"
+                  htmlFor="document"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
                   document
@@ -91,13 +91,13 @@ function AddFile() {
               <li className="check">
                 <input
                   type="radio"
-                  id="link"
+                  id="links"
                   value="3"
                   {...register('tag')}
                   className="fixed w-0 opacity-0"
                 />
                 <label
-                  htmlFor="link"
+                  htmlFor="links"
                   className="text-white cursor-pointer rounded-2xl px-3 py-2 bg-gray-900"
                 >
                   links
@@ -137,7 +137,7 @@ function AddFile() {
               <input
                 type="text"
                 placeholder="https://url.com"
-                id="link"
+                id="url"
                 className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full focus:outline-none focus:ring focus:ring-secondary"
                 {...register('link')}
               />
