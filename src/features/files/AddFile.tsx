@@ -24,6 +24,8 @@ function AddFile() {
   const handleOnSubmit = (data: FormSchemaType) => {
     const image = data.image[0]
 
+    console.log(data)
+
     uploadFile({
       ...data,
       image: image,
