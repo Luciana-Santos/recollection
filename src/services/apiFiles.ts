@@ -26,7 +26,8 @@ export async function getFile(id: string) {
   return file
 }
 
-export async function uploadFile(newFile) {
+export async function uploadFile(newFile: any) {
+
   const imageName = `${Math.random()}-${newFile.image.name}`.replace(/\//g, '')
   const imagePath = `${supabaseUrl}/storage/v1/object/public/recollection-images/${imageName}`
 
