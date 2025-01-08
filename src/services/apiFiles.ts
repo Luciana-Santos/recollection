@@ -26,7 +26,7 @@ export async function getFile(id: string) {
   return file
 }
 
-export async function createEditFile(newFile: any, id: string | undefined) {
+export async function createEditFile(newFile?: any, id?: string | undefined) {
   const hasImagePath = newFile.image?.startsWith?.(supabaseUrl)
 
   const imageName = `${Math.random()}-${newFile.image.name}`.replace(/\//g, '')
