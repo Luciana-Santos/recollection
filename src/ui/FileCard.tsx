@@ -30,7 +30,7 @@ function FileCard({
           {data.title}
         </Link>
         <AlertDialog>
-          <FileContextMenu id={data.id} action={'Details'} />
+          <FileContextMenu id={data.id} action={'Details'} data={data} />
         </AlertDialog>
       </div>
     </article>

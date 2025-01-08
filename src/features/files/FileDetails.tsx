@@ -46,7 +46,7 @@ function FileDetails() {
               <p>{format(new Date(created_at), 'dd/MM/yyyy')}</p>
             </div>
             <AlertDialog>
-              <FileContextMenu id={id} goBack={true} />
+              <FileContextMenu id={id} goBack={true} data={file} />
             </AlertDialog>
           </div>
 
