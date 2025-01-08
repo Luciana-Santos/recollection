@@ -9,14 +9,16 @@ import {
   DropdownMenuTrigger,
 } from './DropdownMenu'
 import { AlertDialogTrigger } from './AlertDialog'
+import { ICardData } from '@/types/types'
 
 type Actions = {
   action?: string
   id: string
   goBack?: boolean
+  data?: ICardData
 }
 
-function FileContextMenu({ action, id, goBack = false }: Actions) {
+function FileContextMenu({ action, id, goBack = false, data }: Actions) {
   const navigate = useNavigate()
   const { isDeleting, deleteFile } = useDeleteFile()
 
@@ -33,7 +35,7 @@ function FileContextMenu({ action, id, goBack = false }: Actions) {
             </Link>
           )}
 
-          <Link to={`/file/${id}`}>
+          <Link to="/upload" state={data}>
             <DropdownMenuItem>Edit</DropdownMenuItem>
           </Link>
 

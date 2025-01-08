@@ -3,33 +3,60 @@ import { ImagePlus } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { formSchema, FormSchemaType } from './formSchema'
 import { useUploadFile } from './useUploadFile'
+import { useUpdateFile } from './useUpdateFile'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function AddFile() {
-  const { isUploading, uploadFile } = useUploadFile()
+  const { state } = useLocation()
+  const isEditSession = Boolean(state)
+  const { uploadFile, isUploading } = useUploadFile()
+  const { updateFile, isUpdating } = useUpdateFile()
+  const navigate = useNavigate()
+
+  const defaultValues = isEditSession
+    ? {
+        title: state?.title || '',
+        link: state?.link || '',
+        tag: state?.tag.id || '',
+        image: state?.image || '',
+      }
+    : { title: '', link: '', tag: '', image: '' }
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      title: '',
-      link: '',
-      tag: '',
-      image: '',
-    },
+    defaultValues,
   })
 
+  const isWorking = isUpdating || isUploading
+
   const handleOnSubmit = (data: FormSchemaType) => {
-    const image = data.image[0]
+    const image = typeof data.image === 'string' ? data.image : data.image[0]
 
-    console.log(data)
-
-    uploadFile({
-      ...data,
-      image: image,
-    })
+    if (isEditSession)
+      updateFile(
+        { newFileData: { ...data, image }, id: state.id },
+        {
+          onSuccess: () => {
+            reset()
+            navigate(`/file/${state.id}`)
+          },
+        },
+      )
+    else
+      uploadFile(
+        { ...data, image: image },
+        {
+          onSuccess: (res) => {
+            reset()
+            navigate(`/file/${res.id}`)
+          },
+        },
+      )
   }
 
   return (
@@ -40,6 +67,7 @@ function AddFile() {
       >
         <fieldset className="relative">
           <input
+            disabled={isWorking}
             type="text"
             placeholder="Title"
             className="bg-[transparent] border-b-2 border-gray-300 w-full  placeholder:text-gray-300 py-2 px-1 text-[clamp(1.2rem,_4vw,_1.5rem)]  focus:rounded-md focus:outline-none focus:ring focus:ring-secondary"
@@ -58,11 +86,13 @@ function AddFile() {
             <ul className="flex gap-3 flex-wrap">
               <li className="check">
                 <input
+                  disabled={isWorking}
                   type="radio"
                   id="image"
                   value="1"
                   className="fixed w-0 opacity-0"
                   {...register('tag')}
+                  defaultChecked={state && state?.tag === 1}
                 />
                 <label
                   htmlFor="image"
@@ -74,11 +104,13 @@ function AddFile() {
 
               <li className="check">
                 <input
+                  disabled={isWorking}
                   type="radio"
                   id="document"
                   value="2"
                   {...register('tag')}
                   className="fixed w-0 opacity-0"
+                  defaultChecked={state && state?.tag === 2}
                 />
                 <label
                   htmlFor="document"
@@ -90,11 +122,13 @@ function AddFile() {
 
               <li className="check">
                 <input
+                  disabled={isWorking}
                   type="radio"
                   id="links"
                   value="3"
                   {...register('tag')}
                   className="fixed w-0 opacity-0"
+                  defaultChecked={state && state?.tag === 3}
                 />
                 <label
                   htmlFor="links"
@@ -106,11 +140,13 @@ function AddFile() {
 
               <li className="check">
                 <input
+                  disabled={isWorking}
                   type="radio"
                   id="video"
                   value="4"
                   {...register('tag')}
                   className="fixed w-0 opacity-0"
+                  defaultChecked={state && state?.tag === 4}
                 />
                 <label
                   htmlFor="video"
@@ -135,6 +171,7 @@ function AddFile() {
                 Url:
               </label>
               <input
+                disabled={isWorking}
                 type="text"
                 placeholder="https://url.com"
                 id="url"
@@ -153,6 +190,7 @@ function AddFile() {
                 Notes:
               </label>
               <textarea
+                disabled={isWorking}
                 id="notes"
                 rows={4}
                 className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full aspect-[3/1] focus:outline-none focus:ring focus:ring-secondary"
@@ -170,6 +208,7 @@ function AddFile() {
             >
               <ImagePlus className="text-gray-300" />
               <input
+                disabled={isWorking}
                 type="file"
                 id="fileUpload"
                 className="hidden"
@@ -189,11 +228,11 @@ function AddFile() {
             Cancel
           </button>
           <button
-            disabled={isUploading}
+            disabled={isWorking}
             type="submit"
             className="w-[120px] main-action"
           >
-            Upload
+            {isEditSession ? 'Update' : 'Upload'}
           </button>
         </div>
       </form>
