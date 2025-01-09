@@ -3,8 +3,12 @@ import Card from '../../ui/FileCard'
 import EmptyGridView from '../../ui/EmptyGridView'
 import { useFiles } from './useFiles'
 
-function FileGridView() {
-  const { files, isLoading } = useFiles()
+type TagType = {
+  tag?: number
+}
+
+function FileGridView({ tag }: TagType) {
+  const { files, isLoading } = useFiles(tag)
 
   if (isLoading) return <FileGridViewSkeleton />
 
