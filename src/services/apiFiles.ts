@@ -1,7 +1,11 @@
 import supabase, { supabaseUrl } from './supabase'
 
-export async function getFiles() {
-  const { data: files, error } = await supabase.from('files').select('*')
+export async function getFiles(tag?: number) {
+  let query = supabase.from('files').select('*')
+
+  if (tag !== undefined) query = query.eq('tag', tag)
+
+  const { data: files, error } = await query
 
   if (error) {
     console.error(error)
