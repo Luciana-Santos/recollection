@@ -5,10 +5,11 @@ import { useFiles } from './useFiles'
 import FilesSortOperations from './FilesSortOperations'
 
 type TagType = {
-  tag?: number
+  tag: number
+  showSortBy?: boolean
 }
 
-function FileGridView({ tag }: TagType) {
+function FileGridView({ tag, showSortBy = true }: TagType) {
   const { files, isLoading } = useFiles(tag)
 
   if (isLoading) return <FileGridViewSkeleton />
@@ -18,7 +19,7 @@ function FileGridView({ tag }: TagType) {
   if (files.length === 1) {
     return (
       <div className="overflow-hidden flex flex-col min-h-screen bg-gray-700 rounded-t-2xl">
-        <FilesSortOperations />
+        {showSortBy && <FilesSortOperations />}
         <main className="main-content items-center">
           {files.map((file) => {
             return <Card key={file.id} data={file} className="max-w-[200px]" />
@@ -30,7 +31,7 @@ function FileGridView({ tag }: TagType) {
 
   return (
     <main className="overflow-hidden bg-gray-700 flex flex-col rounded-t-2xl">
-      <FilesSortOperations />
+      {showSortBy && <FilesSortOperations />}
 
       <div className="main-content">
         {files.map((file) => {
