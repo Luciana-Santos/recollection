@@ -1,9 +1,25 @@
 import supabase, { supabaseUrl } from './supabase'
 
-export async function getFiles(tag?: number) {
+type GetFiles = {
+  tag?: number
+  sortBy?: {
+    field: string
+    direction: string
+  }
+}
+
+export async function getFiles({
+  tag,
+  sortBy = { field: 'created_at', direction: 'asc' },
+}: GetFiles) {
   let query = supabase.from('files').select('*')
 
   if (tag !== undefined) query = query.eq('tag', tag)
+
+  if (sortBy)
+    query = query.order(sortBy.field, {
+      ascending: sortBy.direction === 'asc',
+    })
 
   const { data: files, error } = await query
 
