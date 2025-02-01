@@ -1,4 +1,4 @@
-import { Clock, X as CloseIcon, Folder, LogOut, Trash2 } from 'lucide-react'
+import { Clock, X as CloseIcon, Folder, LogOut } from 'lucide-react'
 import Logo from './Logo'
 import { Link, NavLink } from 'react-router-dom'
 import { subMenuItems } from '../data/content'
@@ -72,17 +72,6 @@ function Sidebar({ isOpen, onOpen }: Sidebar) {
             )
           })}
         </ul>
-        <NavLink
-          to="/trash"
-          className={({ isActive }) =>
-            isActive
-              ? 'sidebar-links text-white'
-              : 'sidebar-links  text-gray-300'
-          }
-          onClick={onOpen}
-        >
-          <Trash2 size={22} /> Trash
-        </NavLink>
       </ul>
 
       <footer>

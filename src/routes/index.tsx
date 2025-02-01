@@ -14,7 +14,6 @@ const Documents = lazy(() => import('@/pages/Documents'))
 const Images = lazy(() => import('@/pages/Images'))
 const Links = lazy(() => import('@/pages/Links'))
 const Videos = lazy(() => import('@/pages/Videos'))
-const Trash = lazy(() => import('@/pages/Trash'))
 const FileItemPage = lazy(() => import('@/pages/FileItemPage'))
 const AppLayout = lazy(() => import('@/ui/AppLayout'))
 
@@ -81,14 +80,6 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<FileGridViewSkeleton />}>
             <Videos />
-          </Suspense>
-        ),
-      },
-      {
-        path: '/trash',
-        element: (
-          <Suspense fallback={<FileGridViewSkeleton />}>
-            <Trash />
           </Suspense>
         ),
       },
