@@ -5,7 +5,7 @@ import { useFiles } from './useFiles'
 import FilesSortOperations from './FilesSortOperations'
 
 type TagType = {
-  tag: number
+  tag?: number
   showSortBy?: boolean
 }
 
