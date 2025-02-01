@@ -7,6 +7,7 @@ import Upload from '@/pages/Upload'
 import ErrorPage from '@/pages/ErrorPage'
 import Login from '@/pages/Login'
 import FileSkeleton from '@/ui/FileSkeleton'
+import ProtectedRoute from '@/ui/ProtectedRoute'
 const Landing = lazy(() => import('@/pages/Landing'))
 const Recents = lazy(() => import('@/pages/Recents'))
 const AllFiles = lazy(() => import('@/pages/AllFiles'))
@@ -22,7 +23,9 @@ export const router = createBrowserRouter([
     path: '/',
     element: (
       <Suspense fallback={<AppLayoutSkeleton />}>
-        <AppLayout />
+        <ProtectedRoute>
+          <AppLayout />
+        </ProtectedRoute>
       </Suspense>
     ),
     children: [
