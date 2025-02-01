@@ -14,7 +14,7 @@ export async function getFiles({
 }: GetFiles) {
   let query = supabase.from('files').select('*')
 
-  if (tag !== undefined) query = query.eq('tag', tag)
+  if (tag !== undefined && tag !== 0) query = query.eq('tag', tag)
 
   if (sortBy)
     query = query.order(sortBy.field, {
