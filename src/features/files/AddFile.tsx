@@ -15,12 +15,12 @@ function AddFile() {
 
   const defaultValues = isEditSession
     ? {
-        title: state?.title || '',
-        link: state?.link || '',
         tag: state?.tag.id || '',
+        link: state?.link || '',
         image: state?.image || '',
+        title: state?.title || '',
       }
-    : { title: '', link: '', tag: '', image: '' }
+    : { tag: '', link: '', image: '', title: '' }
 
   const {
     register,

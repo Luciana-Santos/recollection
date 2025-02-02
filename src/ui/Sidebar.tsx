@@ -2,6 +2,7 @@ import { Clock, X as CloseIcon, Folder, LogOut } from 'lucide-react'
 import Logo from './Logo'
 import { Link, NavLink } from 'react-router-dom'
 import { subMenuItems } from '../data/content'
+import SignOut from '@/features/auth/SignOut'
 
 type Sidebar = {
   isOpen: boolean
@@ -75,12 +76,12 @@ function Sidebar({ isOpen, onOpen }: Sidebar) {
       </ul>
 
       <footer>
-        <button className="flex text-gray-300 gap-2 hover:text-gray-100 transition-all duration-300 ease-in-out">
+        <SignOut>
           <span>
             <LogOut />
           </span>
           Log out
-        </button>
+        </SignOut>
       </footer>
     </aside>
   )
