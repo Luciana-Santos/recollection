@@ -21,7 +21,7 @@ function Landing() {
 
         <div className="flex gap-5">
           <Link
-            to="#"
+            to="/login"
             className="btn-link bg-primary hover:bg-primary/90 outline outline-1 outline-primary"
           >
             Login
