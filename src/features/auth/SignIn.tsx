@@ -6,7 +6,7 @@ function SignIn() {
 
   return (
     <button
-      onClick={() => login}
+      onClick={() => login()}
       disabled={isLoging}
       className="flex gap-2 border hover:border-secondary rounded-sm py-2 px-3 items-center justify-center text-gray-300 border-gray-300 hover:text-secondary"
     >

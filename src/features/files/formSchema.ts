@@ -9,16 +9,11 @@ const ACCEPTED_IMAGE_TYPES = [
 ]
 
 export const formSchema = z.object({
-  title: z
-    .string()
-    .min(3, { message: 'Must be 3 or more characters long.' })
-    .trim(),
+  tag: z.string().min(1, { message: 'At least 1 must be selected.' }),
   link: z
     .string()
     .startsWith('https://', { message: 'Must provide secure URL.' })
     .optional(),
-  notes: z.string().optional(),
-  tag: z.string().min(1, { message: 'At least 1 must be selected.' }),
   image: z
     .any()
     .optional()
@@ -40,6 +35,11 @@ export const formSchema = z.object({
           : true,
       'Max file size allowed is 8MB.',
     ),
+  notes: z.string().optional(),
+  title: z
+    .string()
+    .min(3, { message: 'Must be 3 or more characters long.' })
+    .trim(),
 })
 
 export type FormSchemaType = z.infer<typeof formSchema>
