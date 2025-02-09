@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ImagePlus } from 'lucide-react'
+import { ImagePlus, LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { formSchema, FormSchemaType } from './formSchema'
 import { useUploadFile } from './useUploadFile'
@@ -193,7 +193,7 @@ function AddFile() {
                 disabled={isWorking}
                 id="notes"
                 rows={4}
-                className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full aspect-[3/1] focus:outline-none focus:ring focus:ring-secondary"
+                className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full aspect-[3/1] focus:outline-none focus:ring focus:ring-secondary resize-y"
                 {...register('notes')}
               />
             </fieldset>
@@ -224,15 +224,20 @@ function AddFile() {
         </section>
 
         <div className="flex gap-5 justify-end">
-          <button type="reset" className="text-gray-300 hover:underline">
+          <button
+            disabled={isWorking}
+            type="reset"
+            className="text-gray-300 hover:underline"
+          >
             Cancel
           </button>
           <button
             disabled={isWorking}
             type="submit"
-            className="w-[120px] main-action"
+            className="w-[120px] main-action flex gap-2 items-center justify-center"
           >
-            {isEditSession ? 'Update' : 'Upload'}
+            {!isWorking && (isEditSession ? 'Update' : 'Upload')}
+            {isWorking && <LoaderCircle className="animate-spin" />}
           </button>
         </div>
       </form>
