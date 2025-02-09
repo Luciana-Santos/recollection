@@ -162,6 +162,16 @@ textarea:focus {
   overflow: hidden;
 }
 
+.custom-h {
+  min-height: 100vh;
+}
+
+@media (min-width: 300px) {
+  .custom-h {
+    max-height: 100vh;
+  }
+}
+
 @media (min-width: 700px) {
   .mesh-gradient::before {
     width: 500px;
