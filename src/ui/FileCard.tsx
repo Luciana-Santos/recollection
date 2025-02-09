@@ -1,8 +1,7 @@
-import { Image } from 'lucide-react'
-import { ICardData } from '../types/types'
 import { Link } from 'react-router-dom'
-import FileContextMenu from './FileContextMenu'
+import { ICardData } from '../types/types'
 import { AlertDialog } from './AlertDialog'
+import FileContextMenu from './FileContextMenu'
 
 function FileCard({
   data,
@@ -17,9 +16,20 @@ function FileCard({
     >
       <Link
         to={`/file/${data.id}`}
-        className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 hover:text-secondary transition-colors"
+        className="aspect-[1.6] overflow-hidden rounded-xl grid bg-gray-900 hover:text-secondary transition-colors"
       >
-        {data.image ? <img src={data.image} /> : <Image className="" />}
+        {data.image.endsWith('undefined') ? (
+          <img
+            src="/assets/img/image-placeholder.svg"
+            alt="Image icon placeholdedr"
+            className="justify-self-center self-center max-w-16 bg-cover bg-center overflow-hidden"
+          />
+        ) : (
+          <img
+            src={data.image}
+            className="aspect-[1.6] object-cover object-center"
+          />
+        )}
       </Link>
 
       <div className="flex items-center grid-col-[2fr, 1fr] justify-between">

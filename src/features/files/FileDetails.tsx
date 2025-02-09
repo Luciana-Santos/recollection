@@ -1,11 +1,11 @@
-import { ArrowDownToLine, Image } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { useFile } from './useFile'
-import { format } from 'date-fns'
-import FileSkeleton from '@/ui/FileSkeleton'
+import { AlertDialog } from '@/ui/AlertDialog'
 import EmptyGridView from '@/ui/EmptyGridView'
 import FileContextMenu from '@/ui/FileContextMenu'
-import { AlertDialog } from '@/ui/AlertDialog'
+import FileSkeleton from '@/ui/FileSkeleton'
+import { format } from 'date-fns'
+import { ArrowDownToLine } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { useFile } from './useFile'
 
 function FileDetails() {
   const { file, isLoading } = useFile()
@@ -50,11 +50,15 @@ function FileDetails() {
             </AlertDialog>
           </div>
 
-          <div className="flex flex-col md:flex-row *:flex-1 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-[repeat(2,_minmax(300px,_500px))] gap-5">
             <div className="grid gap-5">
               <div className="flex flex-col gap-2">
                 <span className="text-gray-300 ">Notes:</span>
-                <p>{notes}</p>
+                <p>{`${
+                  notes.length === 0
+                    ? 'No description? Bold move. Let’s hope future you remembers what this is.'
+                    : notes
+                }`}</p>
               </div>
               <div className="flex gap-2 h-max items-center">
                 <span className="text-gray-300">Link:</span>
@@ -67,20 +71,23 @@ function FileDetails() {
               </div>
             </div>
             <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
-              {image ? (
+              {image.endsWith('undefined') ? (
                 <img
-                  src={image}
-                  className="rounded-xl overflow-hidden object-cover  aspect-[1.6]"
+                  src="/assets/img/image-placeholder.svg"
+                  alt=""
+                  className="max-w-16"
                 />
               ) : (
-                <Image />
+                <img src={image} className="rounded-xl overflow-hidden" />
               )}
 
-              <div className="absolute inset-0 text-lg bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-xl">
-                <button className="text-lg">
-                  Donwload image <ArrowDownToLine className="mx-auto mt-4" />
-                </button>
-              </div>
+              {!image.endsWith('undefined') && (
+                <div className="absolute inset-0 text-lg bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-xl">
+                  <button className="text-lg">
+                    Donwload image <ArrowDownToLine className="mx-auto mt-4" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
