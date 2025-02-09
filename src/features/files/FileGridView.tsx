@@ -18,7 +18,7 @@ function FileGridView({ tag, showSortBy = true }: TagType) {
 
   if (files.length === 1) {
     return (
-      <div className="overflow-hidden flex flex-col min-h-screen bg-gray-700 rounded-t-2xl">
+      <div className="overflow-hidden flex flex-col bg-gray-700 rounded-t-2xl">
         {showSortBy && <FilesSortOperations />}
         <main className="main-content items-center">
           {files.map((file) => {
