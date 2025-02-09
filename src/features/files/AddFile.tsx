@@ -193,7 +193,7 @@ function AddFile() {
                 disabled={isWorking}
                 id="notes"
                 rows={4}
-                className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full aspect-[3/1] focus:outline-none focus:ring focus:ring-secondary"
+                className="px-2 py-2 text-gray rounded-md bg-gray-900 w-full aspect-[3/1] focus:outline-none focus:ring focus:ring-secondary resize-y"
                 {...register('notes')}
               />
             </fieldset>
