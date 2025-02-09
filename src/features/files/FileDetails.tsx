@@ -35,7 +35,7 @@ function FileDetails() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-gray-300 text-sm">Tag:</span>
               <Link
-                to="/dashboard/photos"
+                to={`/${tagTitle}`}
                 className="bg-gray-900 px-3 py-1 rounded-2xl hover:bg-primary"
               >
                 {tagTitle}
