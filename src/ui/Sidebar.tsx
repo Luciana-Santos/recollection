@@ -12,7 +12,7 @@ type Sidebar = {
 function Sidebar({ isOpen, onOpen }: Sidebar) {
   return (
     <aside
-      className={`overflow-scroll bg-muted absolute top-0 left-0 min-h-screen md:max-h-screen w-[70vw] sm:relative sm:w-auto px-5 py-8 grid  grid-rows-[min-content,_min-content,_1fr,_max-content] gap-12 transition-all duration-300 ease-in-out sm:ml-0 main-content-scroll ${
+      className={`overflow-scroll bg-muted absolute top-0 left-0 custom-h w-[70vw] sm:relative sm:w-auto px-5 py-8 grid  grid-rows-[min-content,_min-content,_1fr,_max-content] gap-12 transition-all duration-300 ease-in-out sm:ml-0 main-content-scroll ${
         isOpen ? 'ml-[0px] z-10' : '-ml-[2000px]'
       }`}
     >
