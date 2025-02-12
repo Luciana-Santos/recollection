@@ -1,13 +1,13 @@
+import ErrorPage from '@/pages/ErrorPage'
+import Login from '@/pages/Login'
+import Upload from '@/pages/Upload'
+import AppLayoutSkeleton from '@/ui/AppLayoutSkeleton'
+import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
+import FileSkeleton from '@/ui/FileSkeleton'
+import ProtectedRoute from '@/ui/ProtectedRoute'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import LandingLoading from '../ui/LandingLoading'
-import AppLayoutSkeleton from '@/ui/AppLayoutSkeleton'
-import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
-import Upload from '@/pages/Upload'
-import ErrorPage from '@/pages/ErrorPage'
-import Login from '@/pages/Login'
-import FileSkeleton from '@/ui/FileSkeleton'
-import ProtectedRoute from '@/ui/ProtectedRoute'
 const Landing = lazy(() => import('@/pages/Landing'))
 const Recents = lazy(() => import('@/pages/Recents'))
 const AllFiles = lazy(() => import('@/pages/AllFiles'))
@@ -15,8 +15,8 @@ const Documents = lazy(() => import('@/pages/Documents'))
 const Images = lazy(() => import('@/pages/Images'))
 const Links = lazy(() => import('@/pages/Links'))
 const Videos = lazy(() => import('@/pages/Videos'))
-const FileItemPage = lazy(() => import('@/pages/FileItemPage'))
 const AppLayout = lazy(() => import('@/ui/AppLayout'))
+const FileItemPage = lazy(() => import('@/pages/FileItemPage'))
 
 export const router = createBrowserRouter([
   {
