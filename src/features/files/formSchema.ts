@@ -12,8 +12,12 @@ export const formSchema = z.object({
   tag: z.string().min(1, { message: 'At least 1 must be selected.' }),
   link: z
     .string()
-    .startsWith('https://', { message: 'Must provide secure URL.' })
-    .optional(),
+    .trim()
+    .optional()
+    .or(z.literal(''))
+    .refine((val) => !val || val.startsWith('https://'), {
+      message: 'Must provide secure URL.',
+    }),
   image: z
     .any()
     .optional()
