@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 3% 6%;
+    --foreground: 0 0% 85%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 240 3% 6%;
+    --popover-foreground: 19 100% 97%;
+
+    --primary: 345 68% 44%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 18 89% 67%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 0 0% 11%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 19 100% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 11%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 18 89% 67%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  img {
+    @apply w-full block;
+  }
+}
+
+.btn-link {
+  @apply py-2 px-4 rounded-md inline-flex items-center uppercase tracking-wider transition-all duration-300 ease-in-out;
+}
+
+.mesh-gradient::before {
+  content: '';
+  width: 240px;
+  height: 240px;
+  background: linear-gradient(163deg, #bc244a 0%, #f68f62 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 180px;
+  right: 80px;
+  z-index: -2;
+  filter: blur(70px);
+}
+
+.mesh-gradient::after {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(163deg, #bc244a 0%, #f68f62 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 180px;
+  right: 80px;
+  z-index: -1;
+  filter: blur(50px);
+}
+
+.mesh-1 {
+  width: 240px;
+  height: 240px;
+  background: linear-gradient(163deg, #bc244a 0%, #f68f62 100%);
+  border-radius: 50%;
+  filter: blur(40px);
+  position: relative;
+  z-index: -1;
+}
+
+.mesh-2 {
+  content: '';
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(163deg, #bc244a 0%, #f68f62 100%);
+  border-radius: 50%;
+  filter: blur(30px);
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  z-index: -1;
+}
+
+.grad {
+  background: linear-gradient(
+    166deg,
+    rgba(188, 36, 74, 1) 0%,
+    rgba(246, 143, 98, 1) 100%
+  );
+}
+
+.main-action {
+  @apply rounded-sm py-3 text-center uppercase tracking-wide grad leading-none hover:tracking-widest transition-all duration-300 ease-in-out text-white;
+}
+
+.submenu::before {
+  content: '';
+  width: 1px;
+  height: 163px;
+  left: 30px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+}
+
+.submenu li {
+  position: relative;
+}
+
+.submenu li a::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: hsl(240, 4%, 62%);
+  position: absolute;
+  left: -21px;
+  top: 18px;
+}
+
+.sidebar-links {
+  @apply flex gap-2 py-2 capitalize hover:text-white;
+}
+
+.main-content {
+  @apply grid gap-4 justify-center content-start auto-rows-auto md:grid-cols-[repeat(auto-fit,minmax(230px,1fr))] main-content-scroll overflow-y-scroll md:pl-5 py-10  max-h-screen px-10 grow;
+}
+
+.main-content-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0, 0%, 11%) hsl(0, 0%, 11%);
+}
+
+.check input[type='radio']:checked + label,
+.check input[type='radio']:hover + label {
+  background: #bc244a;
+}
+
+input[type='text']:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px hsl(0, 0%, 11%), 0 0 0 6px #f68f62;
+  outline: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.custom-h {
+  min-height: 100vh;
+}
+
+@media (min-width: 300px) {
+  .custom-h {
+    max-height: 100vh;
+  }
+}
+
+@media (min-width: 700px) {
+  .mesh-gradient::before {
+    width: 500px;
+    height: 500px;
+    top: 120px;
+    opacity: 0.7;
+  }
+
+  .mesh-gradient::after {
+    width: 300px;
+    height: 300px;
+    top: 120px;
+    opacity: 0.9;
+  }
+
+  .mesh-1 {
+    width: 500px;
+    height: 500px;
+    opacity: 0.7;
+    filter: blur(60px);
+  }
+
+  .mesh-2 {
+    width: 300px;
+    height: 300px;
+    opacity: 0.9;
+    filter: blur(50px);
+  }
+}
