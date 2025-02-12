@@ -1,8 +1,8 @@
 import FileGridViewSkeleton from '@/ui/FileGridViewSkeleton'
-import Card from '../../ui/FileCard'
 import EmptyGridView from '../../ui/EmptyGridView'
-import { useFiles } from './useFiles'
+import Card from '../../ui/FileCard'
 import FilesSortOperations from './FilesSortOperations'
+import { useFiles } from './useFiles'
 
 type TagType = {
   tag?: number

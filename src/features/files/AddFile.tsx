@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ImagePlus, LoaderCircle } from 'lucide-react'
 import { useForm } from 'react-hook-form'
-import { formSchema, FormSchemaType } from './formSchema'
-import { useUploadFile } from './useUploadFile'
-import { useUpdateFile } from './useUpdateFile'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { formSchema, FormSchemaType } from './formSchema'
+import { useUpdateFile } from './useUpdateFile'
+import { useUploadFile } from './useUploadFile'
 
 function AddFile() {
   const { state } = useLocation()

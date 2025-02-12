@@ -6,7 +6,7 @@ function ErrorPage() {
     <Container className="grid justify-center items-center min-h-screen py-10">
       <main className="grid gap-14">
         <h1 className="text-[clamp(1.2rem,_4vw,_1.6rem)] text-center">
-          Parece que essa página foi excluída... ou nunca existiu.
+          We’re as lost as you are.
         </h1>
 
         <div className="min-w-60 max-w-96 mx-auto">
