@@ -27,12 +27,18 @@ function AddFile() {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<FormSchemaType>({
     resolver: zodResolver(formSchema),
     defaultValues,
   })
 
   const isWorking = isUpdating || isUploading
+
+  const imageFile = watch('image')
+  const imagePreview = imageFile?.[0]
+    ? URL.createObjectURL(imageFile[0])
+    : state?.image || null
 
   const handleOnSubmit = (data: FormSchemaType) => {
     const image = typeof data.image === 'string' ? data.image : data.image[0]
@@ -204,9 +210,13 @@ function AddFile() {
 
             <label
               htmlFor="fileUpload"
-              className="grid cursor-pointer aspect-[1.6] object-cover rounded-md overflow-hidden bg-gray-900 place-items-center"
+              className="grid cursor-pointer aspect-[1.6] object-center object-cover rounded-md overflow-hidden bg-gray-900 place-items-center"
             >
-              <ImagePlus className="text-gray-300" />
+              {imagePreview === null ? (
+                <ImagePlus className="text-gray-300" />
+              ) : (
+                <img src={imagePreview} alt="Preview" />
+              )}
               <input
                 disabled={isWorking}
                 type="file"
