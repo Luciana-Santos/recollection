@@ -68,13 +68,18 @@ function FileDetails() {
               </div>
               <div className="flex gap-2 h-max items-center">
                 <span className="text-gray-300">Link:</span>
-                <a
-                  href={link}
-                  className="py-4 text-secondary hover:text-gray-100 underline"
-                  target="_blank"
-                >
-                  Acessar
-                </a>
+                {`${
+                  link.length === 0 ? (
+                    'No link? Future you’s problem.'
+                  ) : (
+                    <a
+                      href={link}
+                      className="py-4 text-secondary hover:text-gray-100 underline"
+                    >
+                      Acessar
+                    </a>
+                  )
+                }`}
               </div>
             </div>
 
