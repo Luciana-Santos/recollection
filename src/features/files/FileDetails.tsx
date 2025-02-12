@@ -1,9 +1,15 @@
 import { AlertDialog } from '@/ui/AlertDialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from '@/ui/Dialog'
 import EmptyGridView from '@/ui/EmptyGridView'
 import FileContextMenu from '@/ui/FileContextMenu'
 import FileSkeleton from '@/ui/FileSkeleton'
 import { format } from 'date-fns'
-import { ArrowDownToLine } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useFile } from './useFile'
 
@@ -70,25 +76,30 @@ function FileDetails() {
                 </a>
               </div>
             </div>
-            <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
-              {image.endsWith('undefined') ? (
-                <img
-                  src="/assets/img/image-placeholder.svg"
-                  alt=""
-                  className="max-w-16"
-                />
-              ) : (
-                <img src={image} className="rounded-xl overflow-hidden" />
-              )}
 
-              {!image.endsWith('undefined') && (
-                <div className="absolute inset-0 text-lg bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-xl">
-                  <button className="text-lg">
-                    Donwload image <ArrowDownToLine className="mx-auto mt-4" />
-                  </button>
+            <Dialog>
+              <DialogTrigger>
+                <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
+                  {image.endsWith('undefined') ? (
+                    <img
+                      src="/assets/img/image-placeholder.svg"
+                      alt=""
+                      className="max-w-16"
+                    />
+                  ) : (
+                    <img src={image} className="rounded-xl overflow-hidden" />
+                  )}
                 </div>
-              )}
-            </div>
+              </DialogTrigger>
+
+              <DialogContent className="max-h-[90vh] overflow-y-auto main-content-scroll">
+                <DialogHeader>
+                  <DialogDescription>
+                    <img src={image} className="rounded-xl overflow-hidden" />
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
