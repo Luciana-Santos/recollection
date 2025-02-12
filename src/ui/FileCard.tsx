@@ -35,7 +35,7 @@ function FileCard({
       <div className="flex items-center grid-col-[2fr, 1fr] justify-between">
         <Link
           to={`/file/${data.id}`}
-          className="text-[clamp(0.75rem,_4vw,_1rem)] grow hover:text-secondary transition-colors"
+          className="text-[clamp(0.75rem,_4vw,_1rem)] grow hover:text-secondary transition-colors w-[min(150px,_550px)] whitespace-nowrap overflow-hidden text-ellipsis"
         >
           {data.title}
         </Link>

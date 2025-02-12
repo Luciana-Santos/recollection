@@ -36,9 +36,10 @@ function AddFile() {
   const isWorking = isUpdating || isUploading
 
   const imageFile = watch('image')
-  const imagePreview = imageFile?.[0]
-    ? URL.createObjectURL(imageFile[0])
-    : state?.image || null
+  const imagePreview =
+    imageFile && imageFile.length > 0 && imageFile[0] instanceof File
+      ? URL.createObjectURL(imageFile[0])
+      : state?.image || null
 
   const handleOnSubmit = (data: FormSchemaType) => {
     const image = typeof data.image === 'string' ? data.image : data.image[0]
