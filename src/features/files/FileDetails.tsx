@@ -1,9 +1,11 @@
 import { AlertDialog } from '@/ui/AlertDialog'
+import { VisuallyHidden } from 'radix-ui'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from '@/ui/Dialog'
 import EmptyGridView from '@/ui/EmptyGridView'
@@ -68,44 +70,47 @@ function FileDetails() {
               </div>
               <div className="flex gap-2 h-max items-center">
                 <span className="text-gray-300">Link:</span>
-                {`${
-                  link.length === 0 ? (
-                    'No link? Future you’s problem.'
-                  ) : (
-                    <a
-                      href={link}
-                      className="py-4 text-secondary hover:text-gray-100 underline"
-                    >
-                      Acessar
-                    </a>
-                  )
-                }`}
+                {!link ? (
+                  'No link? Future you’s problem.'
+                ) : (
+                  <a
+                    href={link}
+                    className="py-4 text-secondary hover:text-gray-100 underline"
+                  >
+                    Acessar
+                  </a>
+                )}
               </div>
             </div>
 
-            <Dialog>
-              <DialogTrigger>
-                <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
-                  {image.endsWith('undefined') ? (
-                    <img
-                      src="/assets/img/image-placeholder.svg"
-                      alt=""
-                      className="max-w-16"
-                    />
-                  ) : (
+            {image && !image.endsWith('undefined') ? (
+              <Dialog>
+                <DialogTrigger>
+                  <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
                     <img src={image} className="rounded-xl overflow-hidden" />
-                  )}
-                </div>
-              </DialogTrigger>
+                  </div>
+                </DialogTrigger>
 
-              <DialogContent className="max-h-[90vh] overflow-y-auto main-content-scroll">
-                <DialogHeader>
-                  <DialogDescription>
-                    <img src={image} className="rounded-xl overflow-hidden" />
-                  </DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+                <DialogContent className="max-h-[90vh] overflow-y-auto main-content-scroll">
+                  <DialogHeader>
+                    <VisuallyHidden.Root>
+                      <DialogTitle>{title}</DialogTitle>
+                    </VisuallyHidden.Root>
+                    <DialogDescription>
+                      <img src={image} className="rounded-xl overflow-hidden" />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            ) : (
+              <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
+                <img
+                  src="/assets/img/image-placeholder.svg"
+                  alt=""
+                  className="max-w-16"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -10,8 +10,6 @@ export function useLogin() {
   const { mutate: login, isPending: isLoging } = useMutation({
     mutationFn: loginApi,
     onSuccess: (user) => {
-      console.log('useLogin:', user)
-
       queryClient.setQueryData(['user'], user.url)
       navigate('/recents', { replace: true })
     },
