@@ -16,30 +16,36 @@ function FileGridView({ tag, showSortBy = true }: TagType) {
 
   if (!files.length) return <EmptyGridView />
 
-  if (files.length === 1) {
-    return (
-      <div className="overflow-hidden flex flex-col bg-gray-700 rounded-t-2xl min-h-screen">
-        {showSortBy && <FilesSortOperations />}
-        <main className="main-content items-center">
-          {files.map((file) => {
-            return <Card key={file.id} data={file} className="w-[200px]" />
-          })}
-        </main>
-      </div>
-    )
-  }
-
   return (
-    <main className="overflow-hidden bg-gray-700 flex flex-col rounded-t-2xl">
+    <div
+      className={`overflow-hidden flex flex-col bg-gray-700 rounded-t-2xl ${
+        files.length < 3 ? 'min-h-screen' : ''
+      }`}
+    >
       {showSortBy && <FilesSortOperations />}
-
-      <div className="main-content">
-        {files.map((file) => {
-          return <Card key={file.id} data={file} />
-        })}
-      </div>
-    </main>
+      <main className="main-content items-center">
+        {files.map((file) => (
+          <Card
+            key={file.id}
+            data={file}
+            className={files.length === 1 ? 'w-[200px]' : ''}
+          />
+        ))}
+      </main>
+    </div>
   )
+
+  // return (
+  //   <main className="overflow-hidden bg-gray-700 flex flex-col rounded-t-2xl">
+  //     {showSortBy && <FilesSortOperations />}
+
+  //     <div className="main-content">
+  //       {files.map((file) => {
+  //         return <Card key={file.id} data={file} />
+  //       })}
+  //     </div>
+  //   </main>
+  // )
 }
 
 export default FileGridView
