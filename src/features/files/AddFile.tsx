@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { formSchema, FormSchemaType } from './formSchema'
 import { useUpdateFile } from './useUpdateFile'
 import { useUploadFile } from './useUploadFile'
-
 function AddFile() {
   const { state } = useLocation()
   const isEditSession = Boolean(state)
