@@ -71,6 +71,7 @@ function FileDetails() {
                 <a
                   href={link}
                   className="py-4 text-secondary hover:text-gray-100 underline"
+                  target="_blank"
                 >
                   Acessar
                 </a>

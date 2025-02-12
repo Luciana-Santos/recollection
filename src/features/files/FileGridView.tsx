@@ -34,18 +34,6 @@ function FileGridView({ tag, showSortBy = true }: TagType) {
       </main>
     </div>
   )
-
-  // return (
-  //   <main className="overflow-hidden bg-gray-700 flex flex-col rounded-t-2xl">
-  //     {showSortBy && <FilesSortOperations />}
-
-  //     <div className="main-content">
-  //       {files.map((file) => {
-  //         return <Card key={file.id} data={file} />
-  //       })}
-  //     </div>
-  //   </main>
-  // )
 }
 
 export default FileGridView
