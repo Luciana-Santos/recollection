@@ -1,10 +1,12 @@
-import supabase, { supabaseUrl } from './supabase'
+import { mockDataModal } from '@/data/content'
+import { ICardData } from '@/types/types'
+import toast from 'react-hot-toast'
 
 type GetFiles = {
-  tag?: number
+  tag?: string
   sortBy?: {
-    field: string
-    direction: string
+    field: keyof ICardData
+    direction: 'asc' | 'desc'
   }
 }
 
@@ -12,95 +14,42 @@ export async function getFiles({
   tag,
   sortBy = { field: 'created_at', direction: 'asc' },
 }: GetFiles) {
-  let query = supabase.from('files').select('*')
+  let files = [...mockDataModal]
 
-  if (tag !== undefined && tag !== 0) query = query.eq('tag', tag)
+  if (tag) files = files.filter((f) => f.tag === tag)
 
-  if (sortBy)
-    query = query.order(sortBy.field, {
-      ascending: sortBy.direction === 'asc',
-    })
-
-  const { data: files, error } = await query
-
-  if (error) {
-    console.error(error)
-    throw new Error('Files could not get loaded')
-  }
+  files.sort((a, b) => {
+    if (a[sortBy.field] < b[sortBy.field])
+      return sortBy.direction === 'asc' ? -1 : 1
+    if (a[sortBy.field] > b[sortBy.field])
+      return sortBy.direction === 'desc' ? 1 : -1
+    return 0
+  })
 
   return files
 }
 
 export async function getFile(id: string) {
-  const { data: file, error } = await supabase
-    .from('files')
-    .select('*, tag(*)')
-    .eq('id', id)
-    .single()
-
-  if (error) {
-    console.error(error)
-    throw new Error('File not found')
-  }
-
-  return file
+  await new Promise((r) => setTimeout(r, 200))
+  return mockDataModal.find((f) => f.id === id) || null
 }
 
-export async function createEditFile(newFile?: any, id?: string | undefined) {
-  const hasImagePath = newFile.image?.startsWith?.(supabaseUrl)
+export async function createEditFile(newFile?: ICardData) {
+  await new Promise((r) => setTimeout(r, 200))
 
-  const imageName = `${Math.random()}-${newFile.image.name}`.replace(/\//g, '')
-  const imagePath = hasImagePath
-    ? newFile.image
-    : `${supabaseUrl}/storage/v1/object/public/recollection-images/${imageName}`
+  toast(
+    'Tentando salvar um arquivo? Boa tentativa. Modo demo apenas, nada será alterado.',
+  )
 
-  // Cria/Edita arquivo
-  let queryResult
-
-  // Cria
-  if (!id) {
-    queryResult = supabase
-      .from('files')
-      .insert([{ ...newFile, image: imagePath }])
-  }
-
-  // Edita
-  if (id) {
-    queryResult = supabase
-      .from('files')
-      .update({ ...newFile, image: imagePath })
-      .eq('id', id)
-  }
-
-  const { data, error } = await queryResult.select().single()
-
-  if (error) {
-    console.error(error)
-    throw new Error('File could not be uploaded')
-  }
-
-  // Upload da imagem
-  const { error: storageError } = await supabase.storage
-    .from('recollection-images')
-    .upload(imageName, newFile.image)
-
-  // Remove o arquivo se der erro no upload da imagem
-  if (storageError) {
-    await supabase.from('files').delete().eq('id', data[0].id)
-    console.error(storageError)
-    throw new Error('Image could not be loaded and the file was not uploaded')
-  }
-
-  return data
+  return newFile || null
 }
 
-export async function deleteFile(id: string) {
-  const { data, error } = await supabase.from('files').delete().eq('id', id)
+export async function deleteFile() {
+  await new Promise((r) => setTimeout(r, 200))
 
-  if (error) {
-    console.error(error)
-    throw new Error('File could not be uploaded')
-  }
+  toast(
+    'Tentando deletar um arquivo? Fica tranquilo, modo demo proíbe exclusão.',
+  )
 
-  return data
+  return null
 }

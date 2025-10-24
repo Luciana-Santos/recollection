@@ -1,22 +1,19 @@
 import { createEditFile } from '@/services/apiFiles'
+import { ICardData } from '@/types/types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import toast from 'react-hot-toast'
 
 type UpdateFileArgs = {
-  newFileData: any
+  newFileData: ICardData
   id?: string
 }
 
 export function useUpdateFile() {
   const queryClient = useQueryClient()
   const { mutate: updateFile, isPending: isUpdating } = useMutation({
-    mutationFn: ({ newFileData, id }: UpdateFileArgs) =>
-      createEditFile(newFileData, id),
-    onSuccess: () => {
-      toast.success('File successfully updated')
-      queryClient.invalidateQueries({ queryKey: ['files'] })
-    },
-    onError: (err) => toast.error(err.message),
+    mutationFn: ({ newFileData }: UpdateFileArgs) =>
+      createEditFile(newFileData),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['files'] }),
+    onError: (err: any) => console.error(err),
   })
 
   return { updateFile, isUpdating }

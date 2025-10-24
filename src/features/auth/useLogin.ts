@@ -10,14 +10,16 @@ export function useLogin() {
   const { mutate: login, isPending: isLoging } = useMutation({
     mutationFn: loginApi,
     onSuccess: (user) => {
-      console.log('useLogin:', user)
+      queryClient.setQueryData(['user'], user)
+      localStorage.setItem('user', JSON.stringify(user.email))
 
-      queryClient.setQueryData(['user'], user.url)
       navigate('/recents', { replace: true })
     },
     onError: (err) => {
       console.log('ERROR', err)
-      toast.error('Credencials does not exist.')
+      toast.error(
+        'Para acessar, use teste@demo.com / secret. Nada suspeito aqui.',
+      )
     },
   })
 

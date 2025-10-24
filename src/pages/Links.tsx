@@ -6,7 +6,7 @@ function Links() {
     <div className="max-h-screen sm:min-h-screen grid grid-rows-[130px_1fr] bg-gray-700 overflow-hidden">
       <Heading>Links</Heading>
 
-      <FileGridView tag={3} />
+      <FileGridView tag="link" />
     </div>
   )
 }

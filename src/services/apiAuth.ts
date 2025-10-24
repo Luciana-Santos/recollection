@@ -1,27 +1,36 @@
-import supabase from './supabase'
+import { User } from '@/types/types'
 
-export async function login() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
-  })
+export async function login({
+  email,
+  password,
+}: {
+  email: string
+  password: string
+}) {
+  await new Promise((r) => setTimeout(r, 300))
 
-  if (error) throw new Error(error.message)
+  if (email !== 'teste@demo.com' && password !== 'secret') {
+    throw new Error('Invalid credentials')
+  }
 
-  return data
+  const user = {
+    email,
+  }
+
+  localStorage.setItem('user', JSON.stringify(user))
+  return user
 }
 
-export async function getCurrentUser() {
-  const { data: session } = await supabase.auth.getSession()
-  if (!session.session) return null
+export async function getCurrentUser(): Promise<User | null> {
+  await new Promise((r) => setTimeout(r, 200))
 
-  const { data, error } = await supabase.auth.getUser()
+  const stored = localStorage.getItem('user')
+  if (!stored) return null
 
-  if (error) throw new Error(error.message)
-
-  return data?.user
+  return JSON.parse(stored) as User
 }
 
 export async function logout() {
-  const { error } = await supabase.auth.signOut()
-  if (error) throw new Error(error.message)
+  await new Promise((r) => setTimeout(r, 100))
+  localStorage.removeItem('user')
 }

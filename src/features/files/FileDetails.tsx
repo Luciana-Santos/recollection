@@ -21,15 +21,7 @@ function FileDetails() {
   if (isLoading) return <FileSkeleton />
   if (!file) return <EmptyGridView />
 
-  const {
-    created_at,
-    id,
-    image,
-    link,
-    notes,
-    title,
-    tag: { title: tagTitle },
-  } = file
+  const { created_at, id, image, link, notes, title, tag } = file
 
   return (
     <main className="overflow-hidden bg-gray-700 flex flex-col">
@@ -43,15 +35,19 @@ function FileDetails() {
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-gray-300 text-sm">Tag:</span>
               <Link
-                to={`/${tagTitle}`}
+                to={`/${tag}`}
                 className="bg-gray-900 px-3 py-1 rounded-2xl hover:bg-primary"
               >
-                {tagTitle}
+                {tag}
               </Link>
             </div>
             <div className="flex flex-wrap gap-2 items-center">
               <span className="text-gray-300 text-sm">Date:</span>
-              <p>{format(new Date(created_at), 'dd/MM/yyyy')}</p>
+              <p>
+                {created_at && !isNaN(new Date(created_at).getTime())
+                  ? format(new Date(created_at), 'dd/MM/yyyy')
+                  : 'Data inválida'}
+              </p>
             </div>
             <AlertDialog>
               <FileContextMenu id={id} goBack={true} data={file} />

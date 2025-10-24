@@ -18,10 +18,10 @@ function FileCard({
         to={`/file/${data.id}`}
         className="aspect-[1.6] overflow-hidden rounded-xl grid bg-gray-900 hover:text-secondary transition-colors"
       >
-        {data.image.endsWith('undefined') ? (
+        {!data.image || data.image.endsWith('undefined') ? (
           <img
             src="/assets/img/image-placeholder.svg"
-            alt="Image icon placeholdedr"
+            alt="Image placeholder"
             className="justify-self-center self-center max-w-16 bg-cover bg-center overflow-hidden"
           />
         ) : (

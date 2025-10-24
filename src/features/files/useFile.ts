@@ -10,7 +10,7 @@ export function useFile() {
     isLoading,
     data: file,
     error,
-  } = useQuery<ICardData>({
+  } = useQuery<ICardData | null>({
     queryKey: ['file', fileId],
     queryFn: () => getFile(fileId ?? ''),
     retry: false,

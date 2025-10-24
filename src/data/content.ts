@@ -32,7 +32,7 @@ export const mockDataModal = [
     id: '1',
     title: 'gegrrghht ergrg',
     image: '',
-    date: '31/01/23',
+    created_at: '31/01/23',
     tag: 'document',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
@@ -43,7 +43,7 @@ export const mockDataModal = [
     title: 'fefrgr eboggrrgok',
     image:
       'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
-    date: '31/01/23',
+    created_at: '31/01/23',
     tag: 'photos',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
@@ -54,7 +54,7 @@ export const mockDataModal = [
     title: 'java gegrrgsh',
     image:
       'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
-    date: '31/01/23',
+    created_at: '31/01/23',
     tag: 'document',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
@@ -65,8 +65,8 @@ export const mockDataModal = [
     title: 'rgger ebwafwefook',
     image:
       'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
-    date: '31/01/23',
-    tag: 'video',
+    created_at: '31/01/23',
+    tag: 'photos',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
     link: 'https://sistema-solar-luciana.netlify.app/',
@@ -76,7 +76,7 @@ export const mockDataModal = [
     title: 'htrhyjuj grg',
     image:
       'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
-    date: '31/01/23',
+    created_at: '31/01/23',
     tag: 'document',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
@@ -87,7 +87,7 @@ export const mockDataModal = [
     title: 'java gefrfrgr',
     image:
       'https://github.com/Luciana-Santos/Lucianadss-portfolio/blob/main/src/assets/img/sistema_solar-preview.jpg?raw=true',
-    date: '31/01/23',
+    created_at: '31/01/23',
     tag: 'link',
     notes:
       'Every utility class in Tailwind can be applied conditionally at different breakpoints, which makes it a piece of cake to build complex responsive interfaces without ever leaving your HTML.',
