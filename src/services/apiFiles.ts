@@ -44,12 +44,10 @@ export async function createEditFile(newFile?: ICardData) {
   return newFile || null
 }
 
-export async function deleteFile() {
+export async function deleteFile(): Promise<void> {
   await new Promise((r) => setTimeout(r, 200))
 
   toast(
     'Tentando deletar um arquivo? Fica tranquilo, modo demo proíbe exclusão.',
   )
-
-  return null
 }

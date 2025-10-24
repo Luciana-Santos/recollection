@@ -49,7 +49,7 @@ function FileContextMenu({ action, id, goBack = false, data }: Actions) {
       <ConfirmDelete
         disabled={isDeleting}
         onConfirm={() =>
-          deleteFile(id, {
+          deleteFile(undefined, {
             onSettled: () => {
               if (goBack) navigate(-1)
             },
