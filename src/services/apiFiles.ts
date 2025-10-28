@@ -23,8 +23,8 @@ export async function getFiles({
 
   if (sortBy) {
     files.sort((a, b) => {
-      const aValue = a[sortBy.field]
-      const bValue = b[sortBy.field]
+      const aValue = a[sortBy.field] ?? ''
+      const bValue = b[sortBy.field] ?? ''
 
       if (aValue < bValue) return sortBy.direction === 'asc' ? -1 : 1
       if (aValue > bValue) return sortBy.direction === 'asc' ? 1 : -1
