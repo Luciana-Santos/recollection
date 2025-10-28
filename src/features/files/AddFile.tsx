@@ -16,12 +16,13 @@ function AddFile() {
 
   const defaultValues = isEditSession
     ? {
-        tag: state?.tag?.id || '',
+        tag: state?.tag || '',
         link: state?.link || '',
         image: state?.image || '',
         title: state?.title || '',
+        notes: state?.notes || '',
       }
-    : { tag: '', link: '', image: '', title: '' }
+    : { tag: '', link: '', image: '', title: '', notes: '' }
 
   const {
     register,
@@ -35,20 +36,38 @@ function AddFile() {
   })
 
   const isWorking = isUpdating || isUploading
-
   const imageFile = watch('image')
-  const imagePreview =
-    imageFile && imageFile.length > 0 && imageFile[0] instanceof File
-      ? URL.createObjectURL(imageFile[0])
-      : state?.image || null
 
-  const handleOnSubmit = (data: FormSchemaType) => {
-    const image = typeof data.image === 'string' ? data.image : data.image[0]
+  let previewSrc: string | null = null
+  if (isEditSession && state?.image) {
+    previewSrc = state.image
+  } else if (imageFile instanceof FileList && imageFile.length > 0) {
+    previewSrc = URL.createObjectURL(imageFile[0])
+  } else if (typeof imageFile === 'string' && imageFile.trim() !== '') {
+    previewSrc = imageFile
+  }
 
-    const mockFile: ICardData = {
+  const fileToBase64 = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result as string)
+      reader.onerror = reject
+      reader.readAsDataURL(file)
+    })
+
+  const handleOnSubmit = async (data: FormSchemaType) => {
+    let image: string | undefined
+
+    if (data.image instanceof FileList && data.image.length > 0) {
+      image = await fileToBase64(data.image[0])
+    } else if (typeof data.image === 'string') {
+      image = data.image
+    }
+
+    const fileData: ICardData = {
       id: state?.id || Math.random().toString(),
       title: data.title,
-      tag: '',
+      tag: data.tag,
       image: image || '',
       created_at: new Date().toISOString(),
       notes: data.notes || '',
@@ -56,9 +75,9 @@ function AddFile() {
     }
 
     if (isEditSession) {
-      updateFile({ newFileData: mockFile, id: mockFile.id })
+      updateFile({ newFileData: fileData })
     } else {
-      uploadFile(mockFile)
+      uploadFile(fileData)
     }
 
     reset()
@@ -89,16 +108,15 @@ function AddFile() {
         <p className="text-gray-300">Tags:</p>
         <fieldset className="relative">
           <ul className="flex gap-3 flex-wrap">
-            {['image', 'document', 'links', 'videos'].map((t, i) => (
+            {['images', 'documents', 'links', 'videos'].map((t) => (
               <li key={t} className="check">
                 <input
                   disabled={isWorking}
                   type="radio"
                   id={t}
-                  value={i + 1}
+                  value={t}
                   className="fixed w-0 opacity-0"
                   {...register('tag')}
-                  defaultChecked={state && state?.tag?.id === i + 1}
                 />
                 <label
                   htmlFor={t}
@@ -153,10 +171,14 @@ function AddFile() {
             htmlFor="fileUpload"
             className="grid cursor-pointer aspect-[1.6] object-center object-cover rounded-md overflow-hidden bg-gray-900 place-items-center"
           >
-            {imagePreview === null ? (
+            {previewSrc === null ? (
               <ImagePlus className="text-gray-300" />
             ) : (
-              <img src={imagePreview} alt="Preview" />
+              <img
+                src={previewSrc}
+                alt="Preview"
+                className="object-cover object-center aspect-[1.6]"
+              />
             )}
             <input
               disabled={isWorking}

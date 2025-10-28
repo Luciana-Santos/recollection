@@ -10,15 +10,32 @@ function FileCard({
   data: ICardData
   className?: string
 }) {
+  let imageSrc: string | undefined
+
+  if (data.image) {
+    if (typeof data.image === 'string') {
+      imageSrc = data.image
+    } else if (Array.isArray(data.image) && data.image[0] instanceof File) {
+      imageSrc = URL.createObjectURL(data.image[0])
+    } else if (data.image instanceof File) {
+      imageSrc = URL.createObjectURL(data.image)
+    }
+  }
+
+  const hasValidImage =
+    imageSrc && !imageSrc.endsWith('undefined') && imageSrc.trim() !== ''
+
   return (
     <article
-      className={`${className} grid gap-2 cursor-pointer transition-colors`}
+      className={`${
+        className || ''
+      } grid gap-2 cursor-pointer transition-colors`}
     >
       <Link
         to={`/file/${data.id}`}
         className="aspect-[1.6] overflow-hidden rounded-xl grid bg-gray-900 hover:text-secondary transition-colors"
       >
-        {!data.image || data.image.endsWith('undefined') ? (
+        {!hasValidImage ? (
           <img
             src="/assets/img/image-placeholder.svg"
             alt="Image placeholder"
@@ -26,13 +43,14 @@ function FileCard({
           />
         ) : (
           <img
-            src={data.image}
+            src={imageSrc}
+            alt={data.title || 'File image'}
             className="aspect-[1.6] object-cover object-center"
           />
         )}
       </Link>
 
-      <div className="flex items-center grid-col-[2fr, 1fr] justify-between">
+      <div className="flex items-center justify-between">
         <Link
           to={`/file/${data.id}`}
           className="text-[clamp(0.75rem,_4vw,_1rem)] grow hover:text-secondary transition-colors w-[min(150px,_550px)] whitespace-nowrap overflow-hidden text-ellipsis"
@@ -40,7 +58,7 @@ function FileCard({
           {data.title}
         </Link>
         <AlertDialog>
-          <FileContextMenu id={data.id} action={'Details'} data={data} />
+          <FileContextMenu id={data.id} action="Details" data={data} />
         </AlertDialog>
       </div>
     </article>

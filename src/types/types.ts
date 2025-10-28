@@ -1,7 +1,7 @@
 export interface ICardData {
   id: string
   title: string
-  image: string
+  image: string | File | File[] | FileList | null
   created_at: string
   tag: string
   notes: string

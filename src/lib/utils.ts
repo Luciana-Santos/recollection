@@ -1,3 +1,5 @@
+import { mockDataModal } from '@/data/content'
+import { ICardData } from '@/types/types'
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -16,3 +18,14 @@ export function cn(...inputs: ClassValue[]) {
 //   else today.setUTCHours(0, 0, 0, 0)
 //   return today.toISOString()
 // }
+
+export const STORAGE_KEY = 'my_files'
+
+export function getStoredFiles(): ICardData[] {
+  const files = localStorage.getItem(STORAGE_KEY)
+  return files ? JSON.parse(files) : mockDataModal
+}
+
+export function saveStoredFiles(files: ICardData[]) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(files))
+}

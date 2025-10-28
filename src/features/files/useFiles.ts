@@ -1,7 +1,7 @@
+import { getStoredFiles } from '@/lib/utils'
+import { ICardData } from '@/types/types'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'react-router-dom'
-import { ICardData } from '@/types/types'
-import { mockDataModal } from '@/data/content'
 
 type SortBy = {
   field: keyof ICardData
@@ -26,7 +26,7 @@ export function useFiles(tag?: string) {
   } = useQuery<ICardData[]>({
     queryKey: ['files', sortBy, tag],
     queryFn: async () => {
-      let filteredFiles = [...mockDataModal]
+      let filteredFiles = getStoredFiles()
 
       // filtra por tag, se houver
       if (tag) {

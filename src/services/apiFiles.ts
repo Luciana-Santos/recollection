@@ -1,6 +1,5 @@
-import { mockDataModal } from '@/data/content'
+import { getStoredFiles, saveStoredFiles } from '@/lib/utils'
 import { ICardData } from '@/types/types'
-import toast from 'react-hot-toast'
 
 type GetFiles = {
   tag?: string
@@ -13,41 +12,61 @@ type GetFiles = {
 export async function getFiles({
   tag,
   sortBy = { field: 'created_at', direction: 'asc' },
-}: GetFiles) {
-  let files = [...mockDataModal]
+}: GetFiles): Promise<ICardData[]> {
+  await new Promise((r) => setTimeout(r, 200))
 
-  if (tag) files = files.filter((f) => f.tag === tag)
+  let files = getStoredFiles()
 
-  files.sort((a, b) => {
-    if (a[sortBy.field] < b[sortBy.field])
-      return sortBy.direction === 'asc' ? -1 : 1
-    if (a[sortBy.field] > b[sortBy.field])
-      return sortBy.direction === 'desc' ? 1 : -1
-    return 0
-  })
+  if (tag) {
+    files = files.filter((f) => f.tag === tag)
+  }
+
+  if (sortBy) {
+    files.sort((a, b) => {
+      const aValue = a[sortBy.field]
+      const bValue = b[sortBy.field]
+
+      if (aValue < bValue) return sortBy.direction === 'asc' ? -1 : 1
+      if (aValue > bValue) return sortBy.direction === 'asc' ? 1 : -1
+      return 0
+    })
+  }
 
   return files
 }
 
 export async function getFile(id: string) {
   await new Promise((r) => setTimeout(r, 200))
-  return mockDataModal.find((f) => f.id === id) || null
+
+  return getStoredFiles().find((f) => f.id === id) || null
 }
 
-export async function createEditFile(newFile?: ICardData) {
+export async function createFile(newFile: ICardData) {
   await new Promise((r) => setTimeout(r, 200))
 
-  toast(
-    'Tentando salvar um arquivo? Boa tentativa. Modo demo apenas, nada será alterado.',
-  )
+  const files = getStoredFiles()
+  files.push(newFile)
+  saveStoredFiles(files)
 
-  return newFile || null
+  return newFile
 }
 
-export async function deleteFile(): Promise<void> {
+export async function updateFile(file: ICardData) {
   await new Promise((r) => setTimeout(r, 200))
 
-  toast(
-    'Tentando deletar um arquivo? Fica tranquilo, modo demo proíbe exclusão.',
-  )
+  const files = getStoredFiles()
+  const fileIdx = files.findIndex((f) => f.id === file.id)
+  if (fileIdx !== -1) {
+    files[fileIdx] = file
+    saveStoredFiles(files)
+  }
+
+  return file
+}
+
+export async function deleteFile(id: string): Promise<void> {
+  await new Promise((r) => setTimeout(r, 200))
+
+  const files = getStoredFiles().filter((f) => f.id !== id)
+  saveStoredFiles(files)
 }

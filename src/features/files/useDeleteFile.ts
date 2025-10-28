@@ -5,10 +5,10 @@ import toast from 'react-hot-toast'
 export function useDeleteFile() {
   const queryCliente = useQueryClient()
 
-  const { isPending: isDeleting, mutate: deleteFile } = useMutation<void>({
-    mutationFn: deleteFileApi,
+  const { isPending: isDeleting, mutate: deleteFile } = useMutation({
+    mutationFn: (id: string) => deleteFileApi(id),
     onSuccess: () => {
-      toast.success('Modo demo: exclusão não permitida')
+      toast.success('File deleted successfully!')
       queryCliente.invalidateQueries({
         queryKey: ['files'],
       })

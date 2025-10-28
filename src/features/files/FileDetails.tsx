@@ -79,7 +79,7 @@ function FileDetails() {
               </div>
             </div>
 
-            {image && !image.endsWith('undefined') ? (
+            {typeof image === 'string' && !image.endsWith('undefined') ? (
               <Dialog>
                 <DialogTrigger>
                   <div className="aspect-[1.6] overflow-hidden rounded-xl grid items-center justify-center bg-gray-900 relative group">
